@@ -1,0 +1,1497 @@
+<!DOCTYPE html>
+
+<!--
+    File: documentation.html
+    Author: Saviz Mohammadi
+    Date: June 30, 2024
+    Description: This file provides documentation for the "UFO_CMake" project.
+    License: MIT
+-->
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <title>UFO_CMake</title>
+
+        <!-- Fonts -->
+        <link href="https://fonts.googleapis.com/css2?family=Titillium+Web&display=swap" rel="stylesheet">
+        
+        <!-- CSS -->
+        <link rel="stylesheet" href="./css/reset.css">
+        <link rel="stylesheet" href="./css/styles.css">
+    </head>
+
+
+
+
+
+
+
+
+
+
+    <!-- Content -->
+    <body>
+        <header>
+            <h1 id="menu-h1">UFO_CMake</h1>
+            
+            <button id="dark-mode-toggle">
+                <svg width="100%" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 496"><path fill="currentColor" d="M8,256C8,393,119,504,256,504S504,393,504,256,393,8,256,8,8,119,8,256ZM256,440V72a184,184,0,0,1,0,368Z" transform="translate(-8 -8)"/></svg>
+            </button>
+        </header>
+
+
+
+
+
+        <main>
+            <!-- Table Of Content -->
+            <!-- ########################################################## -->
+            
+            <section id="toc" class="section">
+                <h2>Table of Contents</h2>
+                
+                <ul class="toc">
+                    <li><a href="#CMake_Documentation">CMake documentation</a></li>
+                    <li><a href="#Build">Build</a></li>
+                    <li><a href="#MSVC">MSVC (Visual Studio)</a></li>
+                    <li><a href="#GCC">GCC</a></li>
+                    <li><a href="#MinGW">MinGW</a></li>
+                    <li><a href="#Clang/LLVM">Clang/LLVM</a></li>
+                </ul>
+            </section>
+
+            <!-- ########################################################## -->
+
+
+
+
+
+
+
+
+
+
+            <div class="spacerSection"></div>
+
+
+
+
+
+
+
+
+
+
+            <!-- Documentation -->
+            <!-- ########################################################## -->
+
+            <section id="#CMake_Documentation" class="section">
+                <h2>CMake documentation</h2>
+                <p>
+                    The UFO_CMake template handles most requirements for building a simple C++ project with CMake. However, when using CMake, there are a few key details we need to specify clearly, such as selecting the target toolchain and platform along with any special arguments for building the project. This section will guide you through these steps. This documentation includes sections below for each available toolchain, their recommended platforms, and the essential options and arguments. Please note that these represent only a subset of available concepts and options, and are the most important ones. For a comprehensive list, refer to the official <a class="link" href="https://cmake.org/documentation/" target="_blank">CMake documentation</a> or use the following command in your terminal:
+                </p>
+
+                <div class="spacerCode"></div>
+
+                <div class="code-container">
+                    <div class="ribbon">
+                        <button class="copy-button" onclick="copyCode()">Copy</button>
+                    </div>
+                    <code>
+                        cmake --help
+                    </code>
+                </div>
+            </section>
+
+            <!-- ########################################################## -->
+
+
+
+
+
+
+
+
+
+
+            <div class="spacerSection"></div>
+
+
+
+
+
+
+
+
+
+
+            <!-- Build tools -->
+            <!-- ########################################################## -->
+
+            <section id="Build" class="section">
+                <h2>Build</h2>
+
+                <!-- TOPIC -->
+                <!-- ############################### -->
+                <p>
+                    <span class="specialText">BUILDING THE PROJECT</span><br>
+                    The project includes a <span class="specialText">'build'</span> folder intended for generating project build artifacts. To initiate the build process from this directory, navigate to it using your terminal application. Then, execute the following commands, optionally appending any desired CMake arguments:
+                </p>
+
+                <div class="spacerCode"></div>
+
+                <div class="code-container">
+                    <div class="ribbon">
+                        <button class="copy-button" onclick="copyCode()">Copy</button>
+                    </div>
+                    <code>
+                        cmake "./../source"
+                    </code>
+                </div>
+
+                <div class="spacerCode"></div>
+
+                <div class="code-container">
+                    <div class="ribbon">
+                        <button class="copy-button" onclick="copyCode()">Copy</button>
+                    </div>
+                    <code>
+                        cmake --build "./"
+                    </code>
+                </div>
+
+
+
+
+                <div class="spacerTopic"></div>
+
+
+
+
+                <!-- TOPIC -->
+                <!-- ############################### -->
+                <p>
+                    <span class="specialText">USING BUILD TOOLS</span><br>
+                    Remembering all the arguments and commands for building a CMake project can indeed be quite challenging. To alleviate this, we have developed platform-specific command-line helper tools located in the <span class="specialText">"build_tools"</span> folder. Each platform includes a <span class="specialText">"config.json"</span> file where you can conveniently configure your build arguments. These arguments will be simply copied over to the CMake executable. Once you have customized your build settings to your preference, you can initiate the generation and build process with a single command:
+                </p>
+
+
+                <div class="spacerText"></div>
+
+
+                <!-- Windows -->
+                <p>Windows (CMD)</p>
+                <div class="spacerCode"></div>
+
+                <div class="code-container">
+                    <div class="ribbon">
+                        <button class="copy-button" onclick="copyCode()">Copy</button>
+                    </div>
+                    <code>
+                        ./run_cmake.cmd
+                    </code>
+                </div>
+
+
+                <div class="spacerText"></div>
+
+
+                <!-- MacOS -->
+                <p>MacOS (Bash)</p>
+                <div class="spacerCode"></div>
+
+                <div class="code-container">
+                    <div class="ribbon">
+                        <button class="copy-button" onclick="copyCode()">Copy</button>
+                    </div>
+                    <code>
+                        bash ./run_cmake.sh
+                    </code>
+                </div>
+
+
+                <div class="spacerText"></div>
+
+
+                <!-- Linux -->
+                <p>Linux (Bash)</p>
+                <div class="spacerCode"></div>
+
+                <div class="code-container">
+                    <div class="ribbon">
+                        <button class="copy-button" onclick="copyCode()">Copy</button>
+                    </div>
+                    <code>
+                        bash ./run_cmake.sh
+                    </code>
+                </div>
+
+
+
+
+                <div class="spacerTopic"></div>
+
+
+
+
+                <!-- TOPIC -->
+                <!-- ############################### -->
+                <p>
+                    <span class="specialText">RUNNING TESTS</span><br>
+                    If you decided to use this template for your CMake projects, then you're in luck because running tests is built-in using the <a class="link" href="https://github.com/catchorg/Catch2" target="_blank">Catch2</a> library. However, manually executing terminal commands to instruct CMake to run tests can be cumbersome. Therefore, we've developed a convenient utility that allows you to run tests directly from the terminal with ease. This tool is included in the <span class="specialText">"build_tools"</span> folder, per each operating system. Simply navigate to the respective folder and execute the script as follows:
+                </p>
+
+
+                <div class="spacerText"></div>
+
+
+                <!-- Windows -->
+                <p>Windows (CMD)</p>
+                <div class="spacerCode"></div>
+
+                <div class="code-container">
+                    <div class="ribbon">
+                        <button class="copy-button" onclick="copyCode()">Copy</button>
+                    </div>
+                    <code>
+                        ./run_tests.cmd
+                    </code>
+                </div>
+
+
+                <div class="spacerText"></div>
+
+
+                <!-- MacOS -->
+                <p>MacOS (Bash)</p>
+                <div class="spacerCode"></div>
+
+                <div class="code-container">
+                    <div class="ribbon">
+                        <button class="copy-button" onclick="copyCode()">Copy</button>
+                    </div>
+                    <code>
+                        bash ./run_tests.sh
+                    </code>
+                </div>
+
+
+                <div class="spacerText"></div>
+
+
+                <!-- Linux -->
+                <p>Linux (Bash)</p>
+                <div class="spacerCode"></div>
+
+                <div class="code-container">
+                    <div class="ribbon">
+                        <button class="copy-button" onclick="copyCode()">Copy</button>
+                    </div>
+                    <code>
+                        bash ./run_tests.sh
+                    </code>
+                </div>
+            </section>
+
+            <!-- ########################################################## -->
+
+
+
+
+
+
+
+
+
+
+            <div class="spacerSection"></div>
+
+
+
+
+
+
+
+
+
+
+            <!-- MSVC (Visual Studio) -->
+            <!-- ########################################################## -->
+
+            <section id="MSVC" class="section">
+                <h2>MSVC (Visual Studio)</h2>
+
+                <!-- TOPIC -->
+                <!-- ############################### -->
+                <p>
+                    <span class="specialText">DESCRIPTION:</span><br>
+                    The MSVC toolchain stands for <span class="specialText">"Microsoft Visual C++ Compiler"</span>, which contains a suite of tools including a compiler, linker, build system, resource manager, and more. These tools are primarily designed for and available exclusively on the Windows operating system. If you are using a Linux or MacOS machine, utilizing this toolchain can be either impossible or very challenging. This restriction is also why terms like "MSVC", "Visual Studio IDE", and "Windows" are often associated with each other, as they are closely interlinked.
+                </p>
+
+
+
+
+                <div class="spacerTopic"></div>
+
+
+
+
+                <!-- TOPIC -->
+                <!-- ############################### -->
+                <p>
+                    <span class="specialText">INSTALLATION (Windows):</span><br>
+                    MSVC is currently exclusive to the Windows operating system. You have two installation options. You can either download the toolchain completely standalone by referring to the <a class="link" href="https://visualstudio.microsoft.com/visual-cpp-build-tools" target="_blank">standalone installation</a> link, or you can use the complete suite provided alongside the <a class="link" href="https://visualstudio.microsoft.com/downloads/?q=build+tools" target="_blank">Visual Studio IDE installer</a>. Whichever method you choose, make sure to select the category of <span class="specialText">"C++ for Desktop development"</span> once the installer launches. This component will ensure that everything you need for developing C++ software is available to you.
+                </p>
+
+
+
+
+                <div class="spacerTopic"></div>
+
+
+
+
+                <!-- TOPIC -->
+                <!-- ############################### -->
+                <p>
+                    <span class="specialText">MAKING TOOLCHAIN VISIBLE TO CMAKE:</span><br>
+                    After installing the toolchain on your machine, you need to ensure it is visible to CMake for generating your projects. The simplest method is to add the entire installation directory to your system's PATH. This allows CMake to automatically locate all necessary tools. This action is different from one platform and OS to another. You need to refer to the documentation section of your specific operating system to figure out how to add a certain tool to the system PATH.
+                </p>
+
+
+                <div class="spacerText"></div>
+
+
+                <p>
+                    Alternatively, you can add your installation folder's path to the list of paths that CMake will search to find your tool. To add multiple paths, separate them with a semi-colon (";") like this:
+                </p>
+
+                <div class="spacerCode"></div>
+
+                <div class="code-container">
+                    <div class="ribbon">
+                        <button class="copy-button" onclick="copyCode()">Copy</button>
+                    </div>
+                    <code>
+                        cmake -DCMAKE_PREFIX_PATH="/path1/to/toolchain/dir";"/path2/to/toolchain/dir"
+                    </code>
+                </div>
+
+
+                <div class="spacerText"></div>
+
+
+                <p>
+                    Here is an example for where you can generally find the MSVC toolchain installation folder:
+                </p>
+
+                <div class="spacerCode"></div>
+
+                <div class="code-container">
+                    <div class="ribbon">
+                        <button class="copy-button" onclick="copyCode()">Copy</button>
+                    </div>
+                    <code>
+                        cmake -DCMAKE_PREFIX_PATH="C:\Program Files (x86)\Microsoft Visual Studio\2019\{Edition}\VC\Tools\MSVC\"
+                    </code>
+                </div>
+
+
+
+
+                <div class="spacerTopic"></div>
+
+
+
+
+                <!-- TOPIC -->
+                <!-- ############################### -->
+                <p>
+                    <span class="specialText">SPECIFYING GENERATOR (BUILD-SYSTEM):</span><br>
+                    A generator or build system is a scripting language shipped with each toolchain to streamline the process of compiling, linking, and generally building your project. It enbales developers to save their instructions in a build-script. It will then use this script to communicate with the compiler, linker, and other necessary tools on your behalf. MSVC utilizes <a class="link" href="https://learn.microsoft.com/en-us/visualstudio/msbuild/?view=vs-2022" target="_blank">MSBuild</a> as its underlying build system. Visual Studio projects and solutions also take advantage of this build system behind the scenes. To instruct CMake to use this generator, specify the desired version of Visual Studio using the following command:
+                </p>
+
+                <div class="spacerCode"></div>
+
+                <div class="code-container">
+                    <div class="ribbon">
+                        <button class="copy-button" onclick="copyCode()">Copy</button>
+                    </div>
+                    <code>
+                        cmake -G "Generator" "path/to/top/level/CMakeLists.txt"
+                    </code>
+                </div>
+
+
+                <div class="spacerText"></div>
+
+
+                <p>
+                    To obtain a comprehensive list of available names for your generator on your system, execute the <span class="specialText">"cmake --help"</span> command. As you scroll down, you'll eventually come across a section that mentions "Generators". In that section you will find the names of all the generators that are currently supported on your platform. Keep in mind that just because they are supported, does not mean that they are installed. Here is an example of how to select MSVC (Visual Studio):
+                </p>
+
+                <div class="spacerCode"></div>
+
+                <div class="code-container">
+                    <div class="ribbon">
+                        <button class="copy-button" onclick="copyCode()">Copy</button>
+                    </div>
+                    <code>
+                        cmake -G "Visual Studio 17 2022" "path/to/top/level/CMakeLists.txt"
+                    </code>
+                </div>
+
+
+                <div class="spacerText"></div>
+
+
+                <p>
+                    This action will also inform CMake that you intend to utilize the MSVC compiler, linker, and other associated tools from this toolchain, as they are highly compatible with this generator or build system. Some other generators or build-systems allow you to interact with other toolchain compilers, linkers, and tools. However, MSVC is very strict and does not allow this.
+                </p>
+
+
+                <div class="spacerTopic"></div>
+
+
+
+
+                <!-- TOPIC -->
+                <!-- ############################### -->
+                <p>
+                    <span class="specialText">HELP WITH OPTIONS</span><br>
+                    For a concise and informative description of the customizable options and parameters specific to the MSVC (Visual Studio) toolchain, use the following command. Replace "Visual Studio 17 2022" with your installed version on your system:
+                </p>
+
+                <div class="spacerCode"></div>
+
+                <div class="code-container">
+                    <div class="ribbon">
+                        <button class="copy-button" onclick="copyCode()">Copy</button>
+                    </div>
+                    <code>
+                        cmake --help "Visual Studio 17 2022"
+                    </code>
+                </div>
+
+
+
+
+                <div class="spacerTopic"></div>
+
+
+
+
+                <!-- TOPIC -->
+                <!-- ############################### -->
+                <p>
+                    <span class="specialText">ARCHITECTURE SELECTION</span><br>
+                    One crucial consideration for Visual Studio is selecting the architecture, referred to as platform selection in MSVC (Visual Studio) terminology. By default, the target platform name matches that of the host system. You can specify the architecture using the <span class="specialText">"-A"</span> argument. Below are the available platforms, each accompanied by a brief description:
+                </p>
+
+
+                <div class="spacerText"></div>
+
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Architecture</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <td>Win32</td>
+                            <td>32-bit system</td>
+                        </tr>
+                        <tr>
+                            <td>x64</td>
+                            <td>64-bit system</td>
+                        </tr>
+                        <tr>
+                            <td>ARM</td>
+                            <td>Arm 32-bit system</td>
+                        </tr>
+                        <tr>
+                            <td>ARM64</td>
+                            <td>Arm 64-bit system</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+
+                <div class="spacerText"></div>
+
+
+                <p>
+                    For example, the following command generates an MSVC (Visual Studio) project configured for a 64-bit system architecture:
+                </p>
+
+                <div class="spacerCode"></div>
+
+                <div class="code-container">
+                    <div class="ribbon">
+                        <button class="copy-button" onclick="copyCode()">Copy</button>
+                    </div>
+                    <code>
+                        cmake -G "Visual Studio 17 2022" -A "x64"
+                    </code>
+                </div>
+
+
+
+
+                <div class="spacerTopic"></div>
+
+
+
+
+                <!-- TOPIC -->
+                <!-- ############################### -->
+                <p>
+                    <span class="specialText">CONFIGURATION TYPES</span><br>
+                    MSVC (Visual Studio) is a multi-configuration toolchain that enables you to specify and switch between various configuration types during your development. You can choose the configurations that your project starts with during the creation phase using the following command. The configurations are listed and separated by ';'. You can include or exclude any configuration types based on your requirements:
+                </p>
+
+                <div class="spacerCode"></div>
+
+                <div class="code-container">
+                    <div class="ribbon">
+                        <button class="copy-button" onclick="copyCode()">Copy</button>
+                    </div>
+                    <code>
+                        cmake -G "Visual Studio 17 2022" -DCMAKE_CONFIGURATION_TYPES="Debug;Release;MinSizeRel;RelWithDebInfo"
+                    </code>
+                </div>
+
+
+                <div class="spacerText"></div>
+
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Configuration</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <td>Debug</td>
+                            <td>For debugging purposes</td>
+                        </tr>
+                        <tr>
+                            <td>Release</td>
+                            <td>Optimized for best performance</td>
+                        </tr>
+                        <tr>
+                            <td>MinSizeRel</td>
+                            <td>Optimized for minimal executable size</td>
+                        </tr>
+                        <tr>
+                            <td>RelWithDebugInfo</td>
+                            <td>Release executable with debugging support</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </section>
+
+            <!-- ########################################################## -->
+
+
+
+
+
+
+
+
+
+
+            <div class="spacerSection"></div>
+
+
+
+
+
+
+
+
+
+
+            <!-- GCC -->
+            <!-- ########################################################## -->
+
+            <section id="GCC" class="section">
+                <h2>GCC</h2>
+
+                <!-- TOPIC -->
+                <!-- ############################### -->
+                <p>
+                    <span class="specialText">DESCRIPTION:</span><br>
+                    The GCC tool chain stands for <span class="specialText">"GNU Compiler Collection"</span>. <a class="link" href="https://gcc.gnu.org/" target="_blank">GCC</a> is a suite of compilers and tools developed by the GNU Project. It is widely used for compiling C, C++, and other programming languages mostly on Unix-based platforms including Linux, and MacOS. Despite the fact that GCC can be used on both Linux and MacOS platforms, but it is mostly adopted by the Linux community. As a result it is only natural to assume that when we talk about GCC, then the target platform in question is most likely Linux.
+                </p>
+
+
+
+
+                <div class="spacerTopic"></div>
+
+
+
+
+                <!-- TOPIC -->
+                <!-- ############################### -->
+                <p>
+                    <span class="specialText">INSTALLATION (Windows):</span><br>
+                    For Windows platforms, you should refer to the <span class="specialText">MinGW</span> toolchain, as GCC itself is not directly available for Windows.
+                </p>
+
+
+
+
+                <div class="spacerTopic"></div>
+
+
+
+
+                <p>
+                    <span class="specialText">INSTALLATION (MacOS):</span><br>
+                    For MacOS, the recommended method to install GCC is through the <a class="link" href="https://brew.sh/" target="_blank">Homebrew package manager</a>, where you can find the appropriate command on their website by searching for the keyword <span class="specialText">"gcc"</span>.
+
+                    <br>
+                    <br>
+
+                    For detailed installation instructions, visit the official <a class="link" href="https://gcc.gnu.org/install/" target="_blank">GNU Installation Page</a>. Alternatively, you can download the binaries directly from the <a class="link" href="https://gcc.gnu.org/install/binaries.html" target="_blank">binaries page</a>.
+                </p>
+
+
+
+
+                <div class="spacerTopic"></div>
+
+
+
+
+                <p>
+                    <span class="specialText">INSTALLATION (Linux):</span><br>
+                    For Linux users, many distributions include a package manager that simplifies the installation of the GCC toolchain. Below are commands for some popular package managers. Please note that some of these commands will install additional tools to ensure you have everything necessary for developing C/C++ projects under GCC.
+
+                    <br>
+                    <br>
+
+                    For detailed installation instructions, visit the official <a class="link" href="https://gcc.gnu.org/install/" target="_blank">GNU Installation Page</a>. Alternatively, you can download the binaries directly from the <a class="link" href="https://gcc.gnu.org/install/binaries.html" target="_blank">binaries page</a>.
+                </p>
+
+
+                <div class="spacerText"></div>
+
+
+                <!-- apt -->
+                <p>apt (Debian/Ubuntu)</p>
+                <div class="spacerCode"></div>
+
+                <div class="code-container">
+                    <div class="ribbon">
+                        <button class="copy-button" onclick="copyCode()">Copy</button>
+                    </div>
+                    <code>
+                        sudo apt install build-essential
+                    </code>
+                </div>
+
+
+
+
+                <div class="spacerTopic"></div>
+
+
+
+
+                <!-- TOPIC -->
+                <!-- ############################### -->
+                <p>
+                    <span class="specialText">MAKING TOOLCHAIN VISIBLE TO CMAKE:</span><br>
+                    After installing the toolchain on your machine, you need to ensure it is visible to CMake for generating your projects. The simplest method is to add the entire installation directory to your system's PATH. This allows CMake to automatically locate all necessary tools. This action is different from one platform and OS to another. You need to refer to the documentation section of your specific operating system to figure out how to add a certain tool to the system PATH.
+                </p>
+
+
+                <div class="spacerText"></div>
+
+
+                <p>
+                    Alternatively, you can add your installation folder's path to the list of paths that CMake will search to find your tool. To add multiple paths, separate them with a semi-colon (";") like this:
+                </p>
+
+                <div class="spacerCode"></div>
+
+                <div class="code-container">
+                    <div class="ribbon">
+                        <button class="copy-button" onclick="copyCode()">Copy</button>
+                    </div>
+                    <code>
+                        cmake -DCMAKE_PREFIX_PATH="/path1/to/toolchain/dir";"/path2/to/toolchain/dir"
+                    </code>
+                </div>
+
+
+                <div class="spacerText"></div>
+
+
+                <p>
+                    Please note that on Unix platforms, files are often distributed across multiple locations based on their intended use and functionality. As a result, in most GCC installations, these locations are typically already added to the PATH or automatically detected by CMake.
+                </p>
+
+
+
+
+                <div class="spacerTopic"></div>
+
+
+
+
+                <!-- TOPIC -->
+                <!-- ############################### -->
+                <p>
+                    <span class="specialText">SPECIFYING GENERATOR (BUILD-SYSTEM):</span><br>
+                    The GCC toolchain can be used and built with various build systems. The most widely used build system for GCC are <a class="link" href="https://www.gnu.org/software/make/manual/make.html" target="_blank">Makefiles</a>, which are shipped by default with the toolchain. To obtain a comprehensive list of available names for your generator on your system, execute the <span class="specialText">"cmake --help"</span> command. As you scroll down, you'll eventually come across a section that mentions "Generators". In that section you will find the names of all the generators that are currently supported on your platform. Keep in mind that just because they are supported, does not mean that they are installed. Here is an example of how to select GCC with the build system as "Unix Makefiles":
+                </p>
+
+                <div class="spacerCode"></div>
+
+                <div class="code-container">
+                    <div class="ribbon">
+                        <button class="copy-button" onclick="copyCode()">Copy</button>
+                    </div>
+                    <code>
+                        cmake -G "Unix Makefiles" "path/to/top/level/CMakeLists.txt"
+                    </code>
+                </div>
+
+
+
+
+                <div class="spacerTopic"></div>
+
+
+
+
+                <!-- TOPIC -->
+                <!-- ############################### -->
+                <p>
+                    <span class="specialText">HELP WITH OPTIONS</span><br>
+                    For a concise and informative description of the customizable options and parameters specific to the GCC toolchain with "Unix Makefiles", use the following command:
+                </p>
+
+                <div class="spacerCode"></div>
+
+                <div class="code-container">
+                    <div class="ribbon">
+                        <button class="copy-button" onclick="copyCode()">Copy</button>
+                    </div>
+                    <code>
+                        cmake --help "Unix Makefiles"
+                    </code>
+                </div>
+
+
+
+
+                <div class="spacerTopic"></div>
+
+
+
+
+                <!-- TOPIC -->
+                <!-- ############################### -->
+                <p>
+                    <span class="specialText">ARCHITECTURE SELECTION</span><br>
+                    One crucial consideration for GCC is selecting the architecture. To specify the target architecture, one must pass the correct flag to the C++ compiler itself. As a result, in CMake you can specify the architecture to the compiler of the GCC toolchain by using the <span class="specialText">"-DCMAKE_CXX_FLAGS"</span> argument. Below are some of the available architectures, each accompanied by a brief description:
+                </p>
+
+
+                <div class="spacerText"></div>
+
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Architecture</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <td>-m64</td>
+                            <td>For 64-bit systems</td>
+                        </tr>
+                        <tr>
+                            <td>-m32</td>
+                            <td>For 32-bit systems</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+
+                <div class="spacerText"></div>
+
+
+                <p>
+                    For example, the following command generates an GCC project configured for a 64-bit system architecture:
+                </p>
+
+                <div class="spacerCode"></div>
+
+                <div class="code-container">
+                    <div class="ribbon">
+                        <button class="copy-button" onclick="copyCode()">Copy</button>
+                    </div>
+                    <code>
+                        cmake -G "Unix Makefiles" "path/to/top/level/CMakeLists.txt" -DCMAKE_CXX_FLAGS="-m64"
+                    </code>
+                </div>
+
+
+
+
+                <div class="spacerTopic"></div>
+
+
+
+
+                <!-- TOPIC -->
+                <!-- ############################### -->
+                <p>
+                    <span class="specialText">CONFIGURATION TYPES</span><br>
+                    GCC operates as a single-configuration toolchain, requiring you to specify the desired build configuration upfront. You cannot switch between different configuration types during development. To define the configuration, use the <span class="specialText">"-DCMAKE_BUILD_TYPE"</span> argument. If you need to develop with a different configuration type, you must create a separate build folder using CMake from the beginning. This allows you to include or exclude specific configuration types as needed for your project:
+                </p>
+
+                <div class="spacerCode"></div>
+
+                <div class="code-container">
+                    <div class="ribbon">
+                        <button class="copy-button" onclick="copyCode()">Copy</button>
+                    </div>
+                    <code>
+                        cmake -G "Unix Makefiles" "path/to/top/level/CMakeLists.txt" -DCMAKE_BUILD_TYPE="Debug"
+                    </code>
+                </div>
+
+
+                <div class="spacerText"></div>
+
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Configuration</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <td>Debug</td>
+                            <td>For debugging purposes</td>
+                        </tr>
+                        <tr>
+                            <td>Release</td>
+                            <td>Optimized for best performance</td>
+                        </tr>
+                        <tr>
+                            <td>MinSizeRel</td>
+                            <td>Optimized for minimal executable size</td>
+                        </tr>
+                        <tr>
+                            <td>RelWithDebugInfo</td>
+                            <td>Release executable with debugging support</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </section>
+
+            <!-- ########################################################## -->
+
+
+
+
+
+
+
+
+
+
+            <div class="spacerSection"></div>
+
+
+
+
+
+
+
+
+
+
+            <!-- MinGW -->
+            <!-- ########################################################## -->
+
+            <section id="MinGW" class="section">
+                <h2>MinGW</h2>
+
+                <!-- TOPIC -->
+                <!-- ############################### -->
+                <p>
+                    <span class="specialText">DESCRIPTION:</span><br>
+                    The MinGW tool chain stands for <span class="specialText">"Minimalist GNU for Windows"</span>. MinGW is a port of GCC for Windows. It includes necessary utilities and libraries to facilitate native Windows development using GCC. As a result of this, when developers use the word "MinGW", then we can safely assume that the target platform is Windows. MinGW is highly similar to GCC in almost every aspect. Therefore, concepts applicable to GCC also apply seamlessly to MinGW. <a class="link" href="https://www.mingw-w64.org/" target="_blank">MinGW-w64</a> is the newest project of MinGW that aims to bring more functionality and support to Windows.
+                </p>
+
+
+
+
+                <div class="spacerTopic"></div>
+
+
+
+
+                <!-- TOPIC -->
+                <!-- ############################### -->
+                <p>
+                    <span class="specialText">INSTALLATION (Windows):</span><br>
+                    The latest iteration of the MinGW project, known as <span class="specialText">"MinGW-w64"</span>, incorporates the newest features from GCC. You can download the binaries directly from the <a class="link" href="https://www.mingw-w64.org/" target="_blank">official MinGW-w64 page</a>. From personal experience, the best approach is to download the binaries from the <span class="specialText">WinLibs.com</span> option offered by this page.
+                </p>
+
+
+
+
+                <div class="spacerTopic"></div>
+
+
+
+
+                <p>
+                    <span class="specialText">INSTALLATION (MacOS):</span><br>
+                    While MinGW is traditionally used for building Windows applications on Windows systems, it is possible to use this tool to create a cross-compilation environment. This enables us to compile Windows executables on non-Windows platforms such as MacOS. For MacOS, the recommended method to install MinGW is through the <a class="link" href="https://brew.sh/" target="_blank">Homebrew package manager</a>, where you can find the appropriate command on their website by searching for the keyword <span class="specialText">"mingw-w64"</span>.
+
+                    <br>
+                    <br>
+
+                    For detailed installation instructions, visit the official <a class="link" href="https://gcc.gnu.org/install/" target="_blank">GNU Installation Page</a>. Alternatively, you can download the binaries directly from the <a class="link" href="https://gcc.gnu.org/install/binaries.html" target="_blank">binaries page</a>.
+                </p>
+
+
+
+
+                <div class="spacerTopic"></div>
+
+
+
+
+                <p>
+                    <span class="specialText">INSTALLATION (Linux):</span><br>
+                    For Linux users, many distributions include a package manager that simplifies the installation of the MinGW toolchain. Below are commands for some popular package managers.
+
+                    <br>
+                    <br>
+
+                    For detailed installation instructions, visit the official <a class="link" href="https://gcc.gnu.org/install/" target="_blank">GNU Installation Page</a>. Alternatively, you can download the binaries directly from the <a class="link" href="https://gcc.gnu.org/install/binaries.html" target="_blank">binaries page</a>.
+                </p>
+
+
+                <div class="spacerText"></div>
+
+
+                <!-- apt -->
+                <p>apt (Debian/Ubuntu)</p>
+                <div class="spacerCode"></div>
+
+                <div class="code-container">
+                    <div class="ribbon">
+                        <button class="copy-button" onclick="copyCode()">Copy</button>
+                    </div>
+                    <code>
+                        sudo apt install mingw-w64
+                    </code>
+                </div>
+
+
+
+
+                <div class="spacerTopic"></div>
+
+
+
+
+                <!-- TOPIC -->
+                <!-- ############################### -->
+                <p>
+                    <span class="specialText">SPECIFYING GENERATOR:</span><br>
+                    The MinGW toolchain can be used and built with various build systems. The most widely used build system for MinGW are <span class="specialText">"MinGW Makefiles"</span>, which are the ported version of the normal <a class="link" href="https://www.gnu.org/software/make/manual/make.html" target="_blank">Makefiles</a> of GCC. As a result, the same rules apply to MinGW Makefiles. To obtain a comprehensive list of available names for your generator on your system, execute the <span class="specialText">"cmake --help"</span> command. As you scroll down, you'll eventually come across a section that mentions "Generators". In that section you will find the names of all the generators that are currently supported on your platform. Keep in mind that just because they are supported, does not mean that they are installed. Here is an example of how to select MinGW with the build system as "MinGW Makefiles":
+                </p>
+
+                <div class="spacerCode"></div>
+
+                <div class="code-container">
+                    <div class="ribbon">
+                        <button class="copy-button" onclick="copyCode()">Copy</button>
+                    </div>
+                    <code>
+                        cmake -G "MinGW Makefiles" "path/to/top/level/CMakeLists.txt"
+                    </code>
+                </div>
+
+
+
+
+                <div class="spacerTopic"></div>
+
+
+
+
+                <!-- TOPIC -->
+                <!-- ############################### -->
+                <p>
+                    <span class="specialText">HELP WITH OPTIONS</span><br>
+                    For a concise and informative description of the customizable options and parameters specific to the MinGW toolchain with "MinGW Makefiles", use the following command:
+                </p>
+
+                <div class="spacerCode"></div>
+
+                <div class="code-container">
+                    <div class="ribbon">
+                        <button class="copy-button" onclick="copyCode()">Copy</button>
+                    </div>
+                    <code>
+                        cmake --help "MinGW Makefiles"
+                    </code>
+                </div>
+
+
+
+
+                <div class="spacerTopic"></div>
+
+
+
+
+                <!-- TOPIC -->
+                <!-- ############################### -->
+                <p>
+                    <span class="specialText">ARCHITECTURE SELECTION</span><br>
+                    One crucial consideration for MinGW is selecting the architecture. To specify the target architecture, one must pass the correct flag to the C++ compiler itself. As a result, in CMake you can specify the architecture to the compiler of the MinGW toolchain by using the <span class="specialText">"-DCMAKE_CXX_FLAGS"</span> argument. Below are some of the available architectures, each accompanied by a brief description:
+                </p>
+
+
+                <div class="spacerText"></div>
+
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Architecture</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <td>-m64</td>
+                            <td>For 64-bit system</td>
+                        </tr>
+                        <tr>
+                            <td>-m32</td>
+                            <td>For 32-bit system</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+
+                <div class="spacerText"></div>
+
+
+                <p>
+                    For example, the following command generates an MinGW project configured for a 64-bit system architecture:
+                </p>
+
+                <div class="spacerCode"></div>
+
+                <div class="code-container">
+                    <div class="ribbon">
+                        <button class="copy-button" onclick="copyCode()">Copy</button>
+                    </div>
+                    <code>
+                        cmake -G "MinGW Makefiles" "path/to/top/level/CMakeLists.txt" -DCMAKE_CXX_FLAGS="-m64"
+                    </code>
+                </div>
+
+
+
+
+                <div class="spacerTopic"></div>
+
+
+
+
+                <!-- TOPIC -->
+                <!-- ############################### -->
+                <p>
+                    <span class="specialText">CONFIGURATION TYPES</span><br>
+                    MinGW operates as a single-configuration toolchain, requiring you to specify the desired build configuration upfront. You cannot switch between different configuration types during development. To define the configuration, use the <span class="specialText">"-DCMAKE_BUILD_TYPE"</span> argument. If you need to develop with a different configuration type, you must create a separate build folder using CMake from the beginning. This allows you to include or exclude specific configuration types as needed for your project:
+                </p>
+
+                <div class="spacerCode"></div>
+
+                <div class="code-container">
+                    <div class="ribbon">
+                        <button class="copy-button" onclick="copyCode()">Copy</button>
+                    </div>
+                    <code>
+                        cmake -G "MinGW Makefiles" "path/to/top/level/CMakeLists.txt" -DCMAKE_BUILD_TYPE="Debug"
+                    </code>
+                </div>
+
+
+                <div class="spacerText"></div>
+
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Configuration</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <td>Debug</td>
+                            <td>For debugging purposes</td>
+                        </tr>
+                        <tr>
+                            <td>Release</td>
+                            <td>Optimized for best performance</td>
+                        </tr>
+                        <tr>
+                            <td>MinSizeRel</td>
+                            <td>Optimized for minimal executable size</td>
+                        </tr>
+                        <tr>
+                            <td>RelWithDebugInfo</td>
+                            <td>Release executable with debugging support</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </section>
+
+            <!-- ########################################################## -->
+
+
+
+
+
+
+
+
+
+
+            <div class="spacerSection"></div>
+
+
+
+
+
+
+
+
+
+
+            <!-- Clang/LLVM -->
+            <!-- ########################################################## -->
+
+            <section id="Clang/LLVM" class="section">
+                <h2>Clang/LLVM</h2>
+
+                <!-- TOPIC -->
+                <!-- ############################### -->
+                <p>
+                    <span class="specialText">DESCRIPTION:</span><br>
+                    The Clang toolchain project originated from Apple in 2007 as part of the <a class="link" href="https://llvm.org/" target="_blank">LLVM</a> project (Low Level Virtual Machine), aiming to replace GCC as the default compiler. Known for its modular design, Clang offers enhanced error messages and diagnostics compared to GCC. Although Clang is not limited to Apple platforms and supports Linux and Windows as well, it is often associated with Apple among developers.
+                </p>
+
+
+
+
+                <div class="spacerTopic"></div>
+
+
+
+
+                <!-- TOPIC -->
+                <!-- ############################### -->
+                <p>
+                    <span class="specialText">INSTALLATION (Windows):</span><br>
+                    Note that some installations of MinGW or MSVC may include Clang/LLVM compilers and linkers, so you might already have them installed.
+
+                    <br>
+                    <br>
+
+                    You can obtain the latest version of the Clang/LLVM project for various platforms by visiting their <a class="link" href="https://clang.llvm.org/" target="_blank">official website</a> and navigating to the <a class="link" href="https://releases.llvm.org/download.html" target="_blank">downloads</a> section. On the downloads page you will find links to their GitHub releases.
+                </p>
+
+
+
+
+                <div class="spacerTopic"></div>
+
+
+
+
+                <p>
+                    <span class="specialText">INSTALLATION (MacOS):</span><br>
+                    For MacOS, the recommended method to install Clang/LLVM is through the <a class="link" href="https://brew.sh/" target="_blank">Homebrew package manager</a>, where you can find the appropriate command on their website by searching for the keyword <span class="specialText">"llvm"</span>. Note that some installations of GCC or MinGW may include Clang/LLVM compilers and linkers, so you might already have them installed.
+
+                    <br>
+                    <br>
+
+                    You can obtain the latest version of the Clang/LLVM project for various platforms by visiting their <a class="link" href="https://clang.llvm.org/" target="_blank">official website</a> and navigating to the <a class="link" href="https://releases.llvm.org/download.html" target="_blank">downloads</a> section. On the downloads page you will find links to their GitHub releases.
+                </p>
+
+
+
+
+                <div class="spacerTopic"></div>
+
+
+
+
+                <p>
+                    <span class="specialText">INSTALLATION (Linux):</span><br>
+                    For Linux users, many distributions include a package manager that simplifies the installation of the Clang/LLVM toolchain. Below are commands for some popular package managers. Note that some installations of GCC or MinGW may include Clang/LLVM compilers and linkers, so you might already have them installed.
+
+                    <br>
+                    <br>
+
+                    You can obtain the latest version of the Clang/LLVM project for various platforms by visiting their <a class="link" href="https://clang.llvm.org/" target="_blank">official website</a> and navigating to the <a class="link" href="https://releases.llvm.org/download.html" target="_blank">downloads</a> section. On the downloads page you will find links to their GitHub releases.
+                </p>
+
+
+                <div class="spacerText"></div>
+
+
+                <!-- apt -->
+                <p>apt (Debian/Ubuntu)</p>
+                <div class="spacerCode"></div>
+
+                <div class="code-container">
+                    <div class="ribbon">
+                        <button class="copy-button" onclick="copyCode()">Copy</button>
+                    </div>
+                    <code>
+                        sudo apt install llvm
+                    </code>
+                </div>
+
+
+
+
+                <div class="spacerTopic"></div>
+
+
+
+
+                <!-- TOPIC -->
+                <!-- ############################### -->
+                <p>
+                    <span class="specialText">SPECIFYING GENERATOR:</span><br>
+                    The Clang/LLVM toolchain is cross-platform, making it compatible with various build-systems. However, from my experience, it performs optimally when paired with the <a class="link" href="https://ninja-build.org/" target="_blank">Ninja</a> build-system generator. Simply specifying Ninja as the generator isn't sufficient to ensure Clang is automatically used, as other installed toolchains may be prioritized by CMake. Therefore, you must provide specific arguments to CMake for the compiler, linker, and other necessary settings. Below is the command you should use:
+                </p>
+
+                <div class="spacerCode"></div>
+
+                <div class="code-container">
+                    <div class="ribbon">
+                        <button class="copy-button" onclick="copyCode()">Copy</button>
+                    </div>
+                    <code>
+                        cmake -G "Ninja" "path/to/top/level/CMakeLists.txt" -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_LINKER=lld
+                    </code>
+                </div>
+
+
+
+
+                <div class="spacerTopic"></div>
+
+
+
+
+                <!-- TOPIC -->
+                <!-- ############################### -->
+                <p>
+                    <span class="specialText">HELP WITH OPTIONS</span><br>
+                    For a concise and informative description of the customizable options and parameters specific to the Ninja generator, use the following command:
+                </p>
+
+                <div class="spacerCode"></div>
+
+                <div class="code-container">
+                    <div class="ribbon">
+                        <button class="copy-button" onclick="copyCode()">Copy</button>
+                    </div>
+                    <code>
+                        cmake --help "Ninja"
+                    </code>
+                </div>
+
+
+
+
+                <div class="spacerTopic"></div>
+
+
+
+
+                <!-- TOPIC -->
+                <!-- ############################### -->
+                <p>
+                    <span class="specialText">ARCHITECTURE SELECTION</span><br>
+                    One crucial consideration for Clang/LLVM is selecting the architecture. To specify the target architecture, one must pass the correct flag to the C++ compiler itself. As a result, in CMake you can specify the architecture to the compiler of the Clang/LLVM toolchain by using the <span class="specialText">"-DCMAKE_CXX_FLAGS"</span> argument. Below are some of the available architectures, each accompanied by a brief description:
+                </p>
+
+
+                <div class="spacerText"></div>
+
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Architecture</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <td>-m64</td>
+                            <td>For 64-bit system</td>
+                        </tr>
+                        <tr>
+                            <td>-m32</td>
+                            <td>For 32-bit system</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+
+                <div class="spacerText"></div>
+
+
+                <p>
+                    For example, the following command generates an Clang/LLVM project configured for a 64-bit system architecture:
+                </p>
+
+                <div class="spacerCode"></div>
+
+                <div class="code-container">
+                    <div class="ribbon">
+                        <button class="copy-button" onclick="copyCode()">Copy</button>
+                    </div>
+                    <code>
+                        cmake -G "Ninja" "path/to/top/level/CMakeLists.txt" -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_LINKER=lld -DCMAKE_CXX_FLAGS="-m64"
+                    </code>
+                </div>
+
+
+
+
+                <div class="spacerTopic"></div>
+
+
+
+
+                <!-- TOPIC -->
+                <!-- ############################### -->
+                <p>
+                    <span class="specialText">CONFIGURATION TYPES</span><br>
+                    Ninja (the non-multi-config variation at least) operates as a single-configuration build-system, requiring you to specify the desired build configuration upfront. You cannot switch between different configuration types during development. To define the configuration, use the <span class="specialText">"-DCMAKE_BUILD_TYPE"</span> argument. If you need to develop with a different configuration type, you must create a separate build folder using CMake from the beginning. This allows you to include or exclude specific configuration types as needed for your project:
+                </p>
+
+                <div class="spacerCode"></div>
+
+                <div class="code-container">
+                    <div class="ribbon">
+                        <button class="copy-button" onclick="copyCode()">Copy</button>
+                    </div>
+                    <code>
+                        cmake -G "Ninja" -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_LINKER=lld "path/to/top/level/CMakeLists.txt" -DCMAKE_BUILD_TYPE="Debug"
+                    </code>
+                </div>
+
+
+                <div class="spacerText"></div>
+
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Configuration</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <td>Debug</td>
+                            <td>For debugging purposes</td>
+                        </tr>
+                        <tr>
+                            <td>Release</td>
+                            <td>Optimized for best performance</td>
+                        </tr>
+                        <tr>
+                            <td>MinSizeRel</td>
+                            <td>Optimized for minimal executable size</td>
+                        </tr>
+                        <tr>
+                            <td>RelWithDebugInfo</td>
+                            <td>Release executable with debugging support</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </section>
+
+            <!-- ########################################################## -->
+        </main>
+
+
+
+
+
+        <footer>
+            <p id="current-year" class="copy-year">Home page - </p>
+        </footer>
+
+
+
+
+
+        <button id="scrollToTopButton" class="scroll-to-top" onclick="scrollToTop()">&#9650;</button>
+
+
+
+
+
+        <script src="./js/theme-manager.js"></script>
+        <script src="./js/scroll-to-top.js"></script>
+        <script src="./js/copy.js"></script>
+        <script src="./js/date.js"></script>
+    </body>
+</html>

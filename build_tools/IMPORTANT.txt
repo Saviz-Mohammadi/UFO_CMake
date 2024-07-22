@@ -1,0 +1,249 @@
+The 'CMakeLists.txt' file manages most project requirements and structure.
+However, based on my experience, there are often challenges and key insights to consider.
+Here are some important experiences and insights:
+
+
+
+
+
+# [[ MSVC (Visual Studio) ]]
+# [[ ----------------------------------------------------------------------- ]]
+# [[ ----------------------------------------------------------------------- ]]
+
+********Selecting Generator********:
+
+-G "Visual Studio 17 2022"
+
+
+
+
+
+********Configuration Types********:
+
+MSVC is a multi-configuration toolchain. Use the following command
+to set the initial configurations:
+
+
+-DCMAKE_CONFIGURATION_TYPES="Debug;Release;MinSizeRel;RelWithDebInfo"
+
+
+Debug             >>  For debugging purposes
+Release           >>  Optimized for best performance
+MinSizeRel        >>  Optimized for minimal executable size
+RelWithDebugInfo  >>  Release executable with debugging support
+
+
+
+
+
+********Compiler Flags********:
+
+MSVC docs: (https://learn.microsoft.com/en-us/cpp/build/reference/compiler-options-listed-by-category?view=msvc-170)
+
+/O1   >>  Creates small code.
+/O2   >>  Creates fast code.
+/Zi   >>  Generates complete debugging information.
+
+
+
+
+
+********Build Type********:
+
+STATIC:
+
+I prefer to build statically to avoid concerns about missing DLL dependencies.
+However, remembering all the factors that affect static builds can be
+challenging. Here's a list of things to watch out for:
+
+
+-- Make sure third-party libraries are built as static. (Done by Template)
+-- Make sure Modules (custom libraries) are built as static. (Done by Template)
+-- Make sure compiler tools are built as static.
+
+For the final checklist item, you can use the custom tool in the template
+named 'FORCE_STATIC_MSVC' to ensure that this is configured correctly.
+
+SHARED (DLL):
+
+This template isn't optimized for use with DLL libraries yet. Therefore,
+you'll need to conduct your own research to ensure it meets your requirements.
+
+# [[ ----------------------------------------------------------------------- ]]
+# [[ ----------------------------------------------------------------------- ]]
+# [[ MSVC (Visual Studio) ]]
+
+
+
+
+
+# [[ GCC/MinGW ]]
+# [[ ----------------------------------------------------------------------- ]]
+# [[ ----------------------------------------------------------------------- ]]
+
+********Selecting Generator********:
+
+GCC    >>  -G "Unix Makefiles"
+MinGW  >>  -G "MinGW Makefiles"
+
+
+
+
+
+********Configuration Types********:
+
+GCC and MinGW are single-configuration toolchains. Use the following command
+to set the initial configurations:
+
+
+-DCMAKE_BUILD_TYPE="Debug"
+
+"You can only provide one at a time"
+
+
+Debug             >>  For debugging purposes
+Release           >>  Optimized for best performance
+MinSizeRel        >>  Optimized for minimal executable size
+RelWithDebugInfo  >>  Release executable with debugging support
+
+
+
+
+
+********Compiler Flags********:
+
+GNU docs: (https://gcc.gnu.org/onlinedocs/)
+
+On the documentation page go to the following page: "GCC <version> Manual" >> "GCC Command Options" >> Now choose a category...
+
+
+Most used flags and their meanings (GCC/MinGW):
+
+-m64   >>  set architecture to 64-bit
+-m32   >>  set architecture to 32-bit
+-O3    >>  Aggressive optimization for speed.
+-O2    >>  Medium optimization for speed.
+-O1    >>  Lowest optimization for speed.
+-O0    >>  No optimization.
+-ggdb3 >>  Enables debugging generating debugging information.
+
+
+
+
+
+********Build Type********:
+
+STATIC:
+
+I prefer to build statically to avoid concerns about missing shared dependencies.
+However, remembering all the factors that affect static builds can be
+challenging. Here's a list of things to watch out for:
+
+
+-- Make sure third-party libraries are built as static. (Done by Template)
+-- Make sure Modules (custom libraries) are built as static. (Done by Template)
+-- Make sure compiler tools are built as static.
+
+For the final checklist item, you can add the following flags to the
+"-DCMAKE_CXX_COMPILER":
+
+-static
+-static-libgcc
+-static-libstdc++
+
+SHARED:
+
+This template isn't optimized for use with shared libraries yet. Therefore,
+you'll need to conduct your own research to ensure it meets your requirements.
+
+# [[ ----------------------------------------------------------------------- ]]
+# [[ ----------------------------------------------------------------------- ]]
+# [[ GCC/MinGW ]]
+
+
+
+
+
+# [[ Clang/LLVM ]]
+# [[ ----------------------------------------------------------------------- ]]
+# [[ ----------------------------------------------------------------------- ]]
+
+********Selecting Generator********:
+
+Clang is not so easy to setup just by selecting generator.
+You need to specify the path to clang complier and linker via
+"-DCMAKE_CXX_COMPILER" and "-DCMAKE_LINKER"
+
+
+
+
+
+********Configuration Types********:
+
+GCC and MinGW are single-configuration toolchains. Use the following command
+to set the initial configurations:
+
+
+-DCMAKE_BUILD_TYPE="Debug"
+
+"You can only provide one at a time"
+
+
+Debug             >>  For debugging purposes
+Release           >>  Optimized for best performance
+MinSizeRel        >>  Optimized for minimal executable size
+RelWithDebugInfo  >>  Release executable with debugging support
+
+
+
+
+
+********Compiler Flags********:
+
+Clang docs: (https://clang.llvm.org/docs/)
+
+On the documentation page go to the following page: "Clang command line argument reference" >> Now choose a category...
+
+
+Most used flags and their meanings (GCC/MinGW):
+
+-m64   >>  set architecture to 64-bit
+-m32   >>  set architecture to 32-bit
+-O3    >>  Aggressive optimization for speed.
+-O2    >>  Medium optimization for speed.
+-O1    >>  Lowest optimization for speed.
+-O0    >>  No optimization.
+-g     >>  Enables debugging by generating debugging information.
+
+
+
+
+
+********Build Type********:
+
+STATIC:
+
+I prefer to build statically to avoid concerns about missing shared dependencies.
+However, remembering all the factors that affect static builds can be
+challenging. Here's a list of things to watch out for:
+
+
+-- Make sure third-party libraries are built as static. (Done by Template)
+-- Make sure Modules (custom libraries) are built as static. (Done by Template)
+-- Make sure compiler tools are built as static.
+
+For the final checklist item, you can add the following flags to the
+"-DCMAKE_CXX_COMPILER":
+
+-static
+-static-libgcc
+-static-libstdc++
+
+SHARED:
+
+This template isn't optimized for use with shared libraries yet. Therefore,
+you'll need to conduct your own research to ensure it meets your requirements.
+
+# [[ ----------------------------------------------------------------------- ]]
+# [[ ----------------------------------------------------------------------- ]]
+# [[ Clang/LLVM  ]]

@@ -1,0 +1,48 @@
+{
+    "cmake_args": [
+        {
+            "option": "-S",
+            "value": "./../../source"
+        },
+
+        {
+            "option": "-B",
+            "value": "./../../build"
+        },
+
+        {
+            "option": "-G",
+            "value": "Unix Makefiles"
+        },
+
+        {
+            "option": "-DCMAKE_BUILD_TYPE",
+            "value": "Debug"
+        },
+
+        {
+            "option": "-DCMAKE_CONFIGURATION_TYPES",
+            "value": ""
+        },
+
+        {
+            "option": "-DCMAKE_CXX_FLAGS",
+            "value": "-m64 -static -static-libgcc -static-libstdc++"
+        },
+
+        {
+            "option": "-DCMAKE_PREFIX_PATH",
+            "value": ""
+        },
+
+        {
+            "option": "-DCMAKE_CXX_COMPILER",
+            "value": ""
+        },
+
+        {
+            "option": "-DCMAKE_LINKER",
+            "value": ""
+        }
+    ]
+}
