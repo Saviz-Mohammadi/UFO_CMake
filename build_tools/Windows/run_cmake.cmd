@@ -244,7 +244,7 @@ cmake %Arguments%
 
 
 REM Call cmake to build project.
-cmake --build %B_value%
+cmake --build %B_value% --parallel
 
 
 
