@@ -8,7 +8,7 @@ cmake_minimum_required(VERSION "3.30.0" FATAL_ERROR)
 # Project name cannot contain spaces. Use underlines instead.
 
 project("Project_Name"
-	
+
     VERSION 0.0.1
 
     DESCRIPTION "Project description"
@@ -86,6 +86,13 @@ option(USE_TOOL_COPY_RESOURCES
 # [[ ----------------------------------------------------------------------- ]]
 # [[ ----------------------------------------------------------------------- ]]
 
+# This library was introduced in C++ version 11 and comes shipped with it.
+option(USE_LIB_THREADS
+
+    "Adds Multi-threading capability to C++"
+    OFF)
+
+
 option(USE_LIB_NLOHMANN_JSON
 
     "Adds the library 'nlohmann_json' to the project"
@@ -117,13 +124,13 @@ option(USE_LIB_CATCH2
 
 
 option(USE_LIB_WXWIDGETS
-	
+
     "Adds the library 'wxWidgets' to the project"
     OFF)
-	
+
 
 option(USE_LIB_BOOST
-	
+
     "Adds the library 'Boost' to the project"
     OFF)
 
@@ -170,17 +177,17 @@ endif()
 
 
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY	# Defines executable path
-	
+
     "${OUTPUT_DIRECTORY}/$<CONFIG>/executable")
 
 
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY	# Defines shared lib path
-	
+
     "${OUTPUT_DIRECTORY}/$<CONFIG>/executable")
 
 
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY	# Defines static lib path
-	
+
     "${OUTPUT_DIRECTORY}/$<CONFIG>/lib_static")
 
 # [[ ----------------------------------------------------------------------- ]]
@@ -270,7 +277,7 @@ set_target_properties(${EXECUTABLE_NAME}
 
 
 target_sources(${EXECUTABLE_NAME}
-	
+
     PUBLIC
     ${HEADER_FILES}
 
@@ -320,9 +327,9 @@ endif()
 
 
 target_compile_definitions(${EXECUTABLE_NAME}
-	
+
     PUBLIC
-	
+
     $<$<PLATFORM_ID:Linux>:TARGET_IS_LINUX>
     $<$<PLATFORM_ID:Darwin>:TARGET_IS_APPLE>
     $<$<PLATFORM_ID:Windows>:TARGET_IS_WINDOWS>)
@@ -331,9 +338,9 @@ target_compile_definitions(${EXECUTABLE_NAME}
 
 
 target_compile_definitions(${EXECUTABLE_NAME}
-	
+
     PUBLIC
-	
+
     $<$<CONFIG:Debug>:DEBUG_MODE>
     $<$<CONFIG:Release>:RELEASE_MODE>
     $<$<CONFIG:RelWithDebInfo>:RELEASE_WITH_DEBUGINFO_MODE>
@@ -405,6 +412,12 @@ include(FetchContent)
 set(EXTERNAL_LIBRARIES_TO_LINK)
 
 
+
+
+if(USE_LIB_THREADS)
+
+    include("${CMAKE_CURRENT_SOURCE_DIR}/cmake_scripts/libraries/Threads.cmake")
+endif()
 
 
 if(USE_LIB_NLOHMANN_JSON)
