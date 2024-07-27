@@ -1,177 +1,247 @@
 :root
 {
-    /* The root contains common colors that the themes can use */
-    /* The colors are inspired from the "Gnome Human Interface Guidelines" */
-    
-    
-    --Blue_1: #99c1f1;
-    --Blue_2: #62a0ea;
-    --Blue_3: #3584e4;
-    --Blue_4: #1c71d8;
-    --Blue_5: #1a5fb4;
+    /* Blue Colors */
+    --color-blue-1: #4848D6;
+    --color-blue-2: #3838D2;
+    --color-blue-3: #2D2DCB;
+    --color-blue-4: #2A2ABC;
+    --color-blue-5: #2626AC;
+    --color-blue-6: #23239D;
+    --color-blue-7: #1F1F8E;
+    --color-blue-8: #1C1C7F;
+    --color-blue-9: #191970;
 
-    --Green_1: #8ff0a4;
-    --Green_2: #57e389;
-    --Green_3: #33d17a;
-    --Green_4: #2ec27e;
-    --Green_5: #26a269;
+    /* Green Colors */
+    --color-green-1: #5CD75C;
+    --color-green-2: #4FD34F;
+    --color-green-3: #41D041;
+    --color-green-4: #33CD33;
+    --color-green-5: #2FC12F;
+    --color-green-6: #2BB32B;
+    --color-green-7: #28A628;
+    --color-green-8: #259825;
+    --color-green-9: #228B22;
 
-    --Yellow_1: #f9f06b;
-    --Yellow_2: #f8e45c;
-    --Yellow_3: #f6d32d;
-    --Yellow_4: #f5c211;
-    --Yellow_5: #e5a50a;
+    /* Yellow Colors */
+    --color-yellow-1: #F4C34C;
+    --color-yellow-2: #F3BE3D;
+    --color-yellow-3: #F2BA2E;
+    --color-yellow-4: #F1B520;
+    --color-yellow-5: #F0B011;
+    --color-yellow-6: #E4A60D;
+    --color-yellow-7: #D59B0C;
+    --color-yellow-8: #C6900B;
+    --color-yellow-9: #B8860B;
 
-    --Orange_1: #ffbe6f;
-    --Orange_2: #ffa348;
-    --Orange_3: #ff7800;
-    --Orange_4: #e66100;
-    --Orange_5: #c64600;
+    /* Orange Colors */
+    --color-orange-1: #FF9347;
+    --color-orange-2: #FE8A38;
+    --color-orange-3: #FF8228;
+    --color-orange-4: #FF7919;
+    --color-orange-5: #FF700A;
+    --color-orange-6: #F96800;
+    --color-orange-7: #EA6100;
+    --color-orange-8: #DB5B00;
+    --color-orange-9: #CC5500;
 
-    --Red_1: #f66151;
-    --Red_2: #ed333b;
-    --Red_3: #e01b24;
-    --Red_4: #c01c28;
-    --Red_5: #a51d2d;
+    /* Red Colors */
+    --color-red-1: #FF1919;
+    --color-red-2: #FF0606;
+    --color-red-3: #F20000;
+    --color-red-4: #DF0000;
+    --color-red-5: #CC0000;
+    --color-red-6: #B90000;
+    --color-red-7: #A60000;
+    --color-red-8: #930000;
+    --color-red-9: #800000;
 
-    --Purple_1: #dc8add;
-    --Purple_2: #c061cb;
-    --Purple_3: #9141ac;
-    --Purple_4: #813d9c;
-    --Purple_5: #613583;
+    /* Purple Colors */
+    --color-purple-1: #9E1BFF;
+    --color-purple-2: #9607FF;
+    --color-purple-3: #8C00F3;
+    --color-purple-4: #8100E1;
+    --color-purple-5: #7600CE;
+    --color-purple-6: #6B00BB;
+    --color-purple-7: #6000A8;
+    --color-purple-8: #550094;
+    --color-purple-9: #4B0082;
 
-    --Brown_1: #cdab8f;
-    --Brown_2: #b5835a;
-    --Brown_3: #986a44;
-    --Brown_4: #865e3c;
-    --Brown_5: #63452c;
+    /* Brown Colors */
+    --color-brown-1: #C78E54;
+    --color-brown-2: #C28446;
+    --color-brown-3: #BA7B3C;
+    --color-brown-4: #AB7238;
+    --color-brown-5: #9D6833;
+    --color-brown-6: #8F5F2E;
+    --color-brown-7: #81552A;
+    --color-brown-8: #734C25;
+    --color-brown-9: #654321;
 
-    --Light_1: #ffffff;
-    --Light_2: #f6f5f4;
-    --Light_3: #deddda;
-    --Light_4: #c0bfbc;
-    --Light_5: #9a9996;
+    /* Light Colors */
+    --color-light-1: #FFFFFF;
+    --color-light-2: #F2F2F2;
+    --color-light-3: #E5E5E5;
+    --color-light-4: #D8D8D8;
+    --color-light-5: #CCCCCC;
+    --color-light-6: #BFBFBF;
+    --color-light-7: #B2B2B2;
+    --color-light-8: #A5A5A5;
+    --color-light-9: #999999;
 
-    --Dark_1: #77767b;
-    --Dark_2: #5e5c64;
-    --Dark_3: #3d3846;
-    --Dark_4: #241f31;
-    --Dark_5: #000000
+    /* Dark Colors */
+    --color-dark-1: #666666;
+    --color-dark-2: #595959;
+    --color-dark-3: #4C4C4C;
+    --color-dark-4: #3F3F3F;
+    --color-dark-5: #333333;
+    --color-dark-6: #262626;
+    --color-dark-7: #191919;
+    --color-dark-8: #0C0C0C;
+    --color-dark-9: #000000;
 }
+
 
 .lightmode
 {
     /* lightmode will adjust the color of these variables for a light theme */
-    
-    
+
+
     /* Header top */
-    --header-fg: var(--Light_3);
-    --header-bg: var(--Dark_4);
-    
+    --header-fg: var(--color-light-3);
+    --header-bg: var(--color-dark-4);
+
     /* Theme toggle button */
-    --button-theme-fg: var(--Light_3);
-    --button-theme-fg-hover: var(--Green_3);
-    
+    --button-theme-fg: var(--color-light-3);
+    --button-theme-fg-hover: var(--color-light-8);
+
+    /* Hamburger menu */
+    --ham-fg: var(--color-light-3);
+    --ham-bg: var(--color-dark-4);
+    --ham-fg-hover: var(--color-light-8);
+
     /* Main empty background */
-    --main-fg: var(--Light_3);
-    --main-bg: var(--Light_2);
-    
+    --main-fg: var(--color-dark-4);
+    --main-bg: var(--color-light-4);
+
+    /* Menu that appreas when Clicking the Hamburger menu */
+    --menu-fg: var(--color-dark-4);
+    --menu-bg: var(--color-light-3);
+    --menu-br: var(--color-light-3);
+    --menu-fg-hover: var(--color-dark-4);
+    --menu-bg-hover: var(--color-light-5);
+    --menu-fg-active: var(--color-dark-4);
+    --menu-bg-active: var(--color-light-5);
+
     /* Table of contents */
-    --toc-fg: var(--Light_4);
-    --toc-bg: var(--Dark_4);
-    --toc-br: var(--Dark_4);
-    --toc-fg-hover: var(--Dark_4);
-    --toc-bg-hover: var(--Green_4);
-    --toc-fg-active: var(--Dark_4);
-    --toc-bg-active: var(--Green_5);
-    
+    --toc-fg: var(--color-dark-4);
+    --toc-bg: var(--color-light-4);
+    --toc-br: var(--color-light-4);
+    --toc-fg-hover: var(--color-dark-4);
+    --toc-bg-hover: var(--color-light-5);
+    --toc-fg-active: var(--color-dark-4);
+    --toc-bg-active: var(--color-light-5);
+
     /* Sections which look like a box or a card */
-    --section-fg: var(--Light_3);
-    --section-bg: var(--Dark_2);
-    --section-br: var(--Light_5);
+    --section-fg: var(--color-dark-4);
+    --section-bg: var(--color-light-3);
+    --section-br: var(--color-light-3);
 
     /* Tables which appear in the middle */
-    --table-fg: var(--Light_4);
-    --table-bg: var(--Dark_3);
-    --table-bg-nth: var(--Dark_3);
-    --table-br: var(--Dark_3);
-    
+    --table-fg: var(--color-dark-4);
+    --table-bg: var(--color-light-4);
+    --table-bg-nth: var(--color-light-4);
+    --table-br: var(--color-light-5);
+
     /* Highlight text that is special */
-    --special-fg: var(--Green_4);
-    --link-fg: var(--Green_4);
-    
+    --special-fg: var(--color-red-4);
+    --link-fg: var(--color-red-4);
+
     /* Buttons (Copy, scroll-to-top, ...) */
-    --button-fg: var(--Dark_4);
-    --button-bg: var(--Green_4);
-    --button-fg-hover: var(--Dark_4);
-    --button-bg-hover: var(--Green_5);
-    
+    --button-fg: var(--color-light-4);
+    --button-bg: var(--color-dark-3);
+    --button-fg-hover: var(--color-light-4);
+    --button-bg-hover: var(--color-dark-5);
+
     /* Code sections */
-    --code-fg: var(--Light_4);
-    --code-bg: var(--Dark_3);
-    --code-rb: var(--Dark_4);
-    --code-br: var(--Dark_2);
-    
+    --code-fg: var(--color-dark-4);
+    --code-bg: var(--color-light-5);
+    --code-rb: var(--color-light-9);
+    --code-br: var(--color-light-3);
+
     /* The footer */
-    --footer-fg: var(--Light_3);
-    --footer-bg: var(--Dark_4);
+    --footer-fg: var(--color-light-3);
+    --footer-bg: var(--color-dark-4);
 }
 
 .darkmode
 {
     /* darkmode will adjust the color of these variables for a dark theme */
-    
+
     /* Header top */
-    --header-fg: var(--Light_3);
-    --header-bg: var(--Dark_4);
+    --header-fg: var(--color-light-3);
+    --header-bg: var(--color-dark-4);
 
     /* Theme toggle button */
-    --button-theme-fg: var(--Light_3);
-    --button-theme-fg-hover: var(--Green_3);
+    --button-theme-fg: var(--color-light-3);
+    --button-theme-fg-hover: var(--color-light-8);
+
+    /* Hamburger menu */
+    --ham-fg: var(--color-light-3);
+    --ham-bg: var(--color-dark-4);
+    --ham-fg-hover: var(--color-light-8);
 
     /* Main empty background */
-    --main-fg: var(--Light_4);
-    --main-bg: var(--Dark_2);
+    --main-fg: var(--color-light-4);
+    --main-bg: var(--color-dark-1);
+
+    /* Menu that appreas when Clicking the Hamburger menu */
+    --menu-fg: var(--color-light-4);
+    --menu-bg: var(--color-dark-3);
+    --menu-br: var(--color-dark-3);
+    --menu-fg-hover: var(--color-light-4);
+    --menu-bg-hover: var(--color-dark-5);
+    --menu-fg-active: var(--color-light-4);
+    --menu-bg-active: var(--color-dark-5);
 
     /* Table of contents */
-    --toc-fg: var(--Light_4);
-    --toc-bg: var(--Dark_4);
-    --toc-br: var(--Dark_4);
-    --toc-fg-hover: var(--Dark_4);
-    --toc-bg-hover: var(--Green_4);
-    --toc-fg-active: var(--Dark_4);
-    --toc-bg-active: var(--Green_5);
+    --toc-fg: var(--color-light-4);
+    --toc-bg: var(--color-dark-4);
+    --toc-br: var(--color-dark-4);
+    --toc-fg-hover: var(--color-light-4);
+    --toc-bg-hover: var(--color-dark-5);
+    --toc-fg-active: var(--color-light-4);
+    --toc-bg-active: var(--color-dark-5);
 
     /* Sections which look like a box or a card */
-    --section-fg: var(--Light_4);
-    --section-bg: var(--Dark_3);
-    --section-br: var(--Dark_3);
+    --section-fg: var(--color-light-4);
+    --section-bg: var(--color-dark-3);
+    --section-br: var(--color-dark-3);
 
     /* Tables which appear in the middle */
-    --table-fg: var(--Light_4);
-    --table-bg: var(--Dark_2);
-    --table-bg-nth: var(--Dark_2);
-    --table-br: var(--Dark_1);
+    --table-fg: var(--color-light-4);
+    --table-bg: var(--color-dark-2);
+    --table-bg-nth: var(--color-dark-2);
+    --table-br: var(--color-dark-5);
 
     /* Highlight text that is special */
-    --special-fg: var(--Green_4);
-    --link-fg: var(--Green_4);
+    --special-fg: var(--color-green-5);
+    --link-fg: var(--color-green-5);
 
     /* Buttons (Copy, scroll-to-top, ...) */
-    --button-fg: var(--Dark_4);
-    --button-bg: var(--Green_4);
-    --button-fg-hover: var(--Dark_4);
-    --button-bg-hover: var(--Green_5);
+    --button-fg: var(--color-light-4);
+    --button-bg: var(--color-dark-4);
+    --button-fg-hover: var(--color-light-4);
+    --button-bg-hover: var(--color-dark-6);
 
     /* Code sections */
-    --code-fg: var(--Light_4);
-    --code-bg: var(--Dark_2);
-    --code-rb: var(--Dark_4);
-    --code-br: var(--Dark_3);
+    --code-fg: var(--color-light-4);
+    --code-bg: var(--color-dark-2);
+    --code-rb: var(--color-dark-5);
+    --code-br: var(--color-dark-3);
 
     /* The footer */
-    --footer-fg: var(--Light_3);
-    --footer-bg: var(--Dark_4);
+    --footer-fg: var(--color-light-3);
+    --footer-bg: var(--color-dark-4);
 }
 
 
