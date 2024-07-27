@@ -74,7 +74,7 @@
     
     /* Main empty background */
     --main-fg: var(--Light_3);
-    --main-bg: var(--Light_3);
+    --main-bg: var(--Light_2);
     
     /* Table of contents */
     --toc-fg: var(--Light_4);
