@@ -40,13 +40,7 @@ declare -A cmake_args
 S_value=""
 B_value=""
 G_value=""
-A_value=""
-DCMAKE_BUILD_TYPE_value=""
-DCMAKE_CONFIGURATION_TYPES_value=""
-DCMAKE_CXX_FLAGS_value=""
-DCMAKE_PREFIX_PATH_value=""
-DCMAKE_CXX_COMPILER_value=""
-DCMAKE_LINKER_value=""
+DCMAKE_TOOLCHAIN_FILE_value=""
 
 
 
@@ -79,27 +73,9 @@ while IFS='@' read -r option value; do
         elif [ "$option" = "-G" ]; then
 
                 G_value="$value"
-        elif [ "$option" = "-A" ]; then
+        elif [ "$option" = "-DCMAKE_TOOLCHAIN_FILE" ]; then
 
-                A_value="$value"
-        elif [ "$option" = "-DCMAKE_BUILD_TYPE" ]; then
-
-                DCMAKE_BUILD_TYPE_value="$value"
-        elif [ "$option" = "-DCMAKE_CONFIGURATION_TYPES" ]; then
-
-                DCMAKE_CONFIGURATION_TYPES_value="$value"
-        elif [ "$option" = "-DCMAKE_CXX_FLAGS" ]; then
-
-                DCMAKE_CXX_FLAGS_value="$value"
-        elif [ "$option" = "-DCMAKE_PREFIX_PATH" ]; then
-
-                DCMAKE_PREFIX_PATH_value="$value"
-        elif [ "$option" = "-DCMAKE_CXX_COMPILER" ]; then
-
-                DCMAKE_CXX_COMPILER_value="$value"
-        elif [ "$option" = "-DCMAKE_LINKER" ]; then
-
-                DCMAKE_LINKER_value="$value"
+                DCMAKE_TOOLCHAIN_FILE_value="$value"
         fi
 
         # Echo messages.
@@ -134,13 +110,7 @@ if [ "$extraEchoEnabled" = true ]; then
         echo "-S, $S_value"
         echo "-B, $B_value"
         echo "-G, $G_value"
-        echo "-A, $A_value"
-        echo "-DCMAKE_BUILD_TYPE, $DCMAKE_BUILD_TYPE_value"
-        echo "-DCMAKE_CONFIGURATION_TYPES, $DCMAKE_CONFIGURATION_TYPES_value"
-        echo "-DCMAKE_CXX_FLAGS, $DCMAKE_CXX_FLAGS_value"
-        echo "-DCMAKE_PREFIX_PATH, $DCMAKE_PREFIX_PATH_value"
-        echo "-DCMAKE_CXX_COMPILER, $DCMAKE_CXX_COMPILER_value"
-        echo "-DCMAKE_LINKER, $DCMAKE_LINKER_value"
+        echo "-DCMAKE_TOOLCHAIN_FILE, $DCMAKE_TOOLCHAIN_FILE_value"
 fi
 
 
@@ -175,32 +145,8 @@ if [ -n "$G_value" ]; then
         Arguments+=( "-G" "$G_value" )
 fi
 
-if [ -n "$A_value" ]; then
-        Arguments+=( "-A" "$A_value" )
-fi
-
-if [ -n "$DCMAKE_BUILD_TYPE_value" ]; then
-        Arguments+=( "-DCMAKE_BUILD_TYPE=$DCMAKE_BUILD_TYPE_value" )
-fi
-
-if [ -n "$DCMAKE_CONFIGURATION_TYPES_value" ]; then
-        Arguments+=( "-DCMAKE_CONFIGURATION_TYPES=$DCMAKE_CONFIGURATION_TYPES_value" )
-fi
-
-if [ -n "$DCMAKE_CXX_FLAGS_value" ]; then
-        Arguments+=( "-DCMAKE_CXX_FLAGS=$DCMAKE_CXX_FLAGS_value" )
-fi
-
-if [ -n "$DCMAKE_PREFIX_PATH_value" ]; then
-        Arguments+=( "-DCMAKE_PREFIX_PATH=$DCMAKE_PREFIX_PATH_value" )
-fi
-
-if [ -n "$DCMAKE_CXX_COMPILER_value" ]; then
-        Arguments+=( "-DCMAKE_CXX_COMPILER=$DCMAKE_CXX_COMPILER_value" )
-fi
-
-if [ -n "$DCMAKE_LINKER_value" ]; then
-        Arguments+=( "-DCMAKE_LINKER=$DCMAKE_LINKER_value" )
+if [ -n "$DCMAKE_TOOLCHAIN_FILE_value" ]; then
+        Arguments+=( "-DCMAKE_TOOLCHAIN_FILE=$DCMAKE_TOOLCHAIN_FILE_value" )
 fi
 
 
@@ -250,4 +196,3 @@ cmake "${Arguments[@]}"
 
 # Call cmake to build project
 cmake --build "$B_value" --parallel
-

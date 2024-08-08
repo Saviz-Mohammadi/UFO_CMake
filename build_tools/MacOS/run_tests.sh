@@ -3,7 +3,7 @@
 
 
 # PATHS:
-PATH_JQ_EXECUTABLE="./../jq/jq-macos-amd64"  # Assuming jq executable for Linux is in a similar relative path
+PATH_JQ_EXECUTABLE="./../jq/jq-macos-amd64"  # Assuming jq executable for MacOS is in a similar relative path
 PATH_CONFIGURATION="./config.json"
 
 

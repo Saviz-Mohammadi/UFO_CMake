@@ -47,26 +47,8 @@ set "B_value="
 set "-G=-G"
 set "G_value="
 
-set "-A=-A"
-set "A_value="
-
-set "-DCMAKE_BUILD_TYPE=-DCMAKE_BUILD_TYPE"
-set "DCMAKE_BUILD_TYPE_value="
-
-set "-DCMAKE_CONFIGURATION_TYPES=-DCMAKE_CONFIGURATION_TYPES"
-set "DCMAKE_CONFIGURATION_TYPES_value="
-
-set "-DCMAKE_CXX_FLAGS=-DCMAKE_CXX_FLAGS"
-set "DCMAKE_CXX_FLAGS_value="
-
-set "-DCMAKE_PREFIX_PATH=-DCMAKE_PREFIX_PATH"
-set "DCMAKE_PREFIX_PATH_value="
-
-set "-DCMAKE_CXX_COMPILER=-DCMAKE_CXX_COMPILER"
-set "DCMAKE_CXX_COMPILER_value="
-
-set "-DCMAKE_LINKER=-DCMAKE_LINKER"
-set "DCMAKE_LINKER_value="
+set "-DCMAKE_TOOLCHAIN_FILE=-DCMAKE_TOOLCHAIN_FILE"
+set "DCMAKE_TOOLCHAIN_FILE="
 
 
 
@@ -100,27 +82,9 @@ for /f "tokens=1,2 delims=@" %%a in ('%PATH_JQ_EXECUTABLE% -r ".cmake_args[] | .
     ) else if "!option!"=="-G" (
     
         set "G_value=!value!"
-    ) else if "!option!"=="-A" (
+    ) else if "!option!"=="-DCMAKE_TOOLCHAIN_FILE" (
 
-        set "A_value=!value!"
-    ) else if "!option!"=="-DCMAKE_BUILD_TYPE" (
-    
-        set "DCMAKE_BUILD_TYPE_value=!value!"
-    ) else if "!option!"=="-DCMAKE_CONFIGURATION_TYPES" (
-    
-        set "DCMAKE_CONFIGURATION_TYPES_value=!value!"
-    ) else if "!option!"=="-DCMAKE_CXX_FLAGS" (
-    
-        set "DCMAKE_CXX_FLAGS_value=!value!"
-    ) else if "!option!"=="-DCMAKE_PREFIX_PATH" (
-    
-        set "DCMAKE_PREFIX_PATH_value=!value!"
-    ) else if "!option!"=="-DCMAKE_CXX_COMPILER" (
-    
-        set "DCMAKE_CXX_COMPILER_value=!value!"
-    ) else if "!option!"=="-DCMAKE_LINKER" (
-    
-        set "DCMAKE_LINKER_value=!value!"
+        set "DCMAKE_TOOLCHAIN_FILE=!value!"
     )
 
     REM echo messages.
@@ -158,13 +122,7 @@ if !extraEchoEnabled! == true (
     echo %-S%, %S_value%
     echo %-B%, %B_value%
     echo %-G%, %G_value%
-    echo %-A%, %A_value%
-    echo %-DCMAKE_BUILD_TYPE%, %DCMAKE_BUILD_TYPE_value%
-    echo %-DCMAKE_CONFIGURATION_TYPES%, %DCMAKE_CONFIGURATION_TYPES_value%
-    echo %-DCMAKE_CXX_FLAGS%, %DCMAKE_CXX_FLAGS_value%
-    echo %-DCMAKE_PREFIX_PATH%, %DCMAKE_PREFIX_PATH_value%
-    echo %-DCMAKE_CXX_COMPILER%, %DCMAKE_CXX_COMPILER_value%
-    echo %-DCMAKE_LINKER%, %DCMAKE_LINKER_value%
+    echo %-DCMAKE_TOOLCHAIN_FILE%, %DCMAKE_TOOLCHAIN_FILE%
 )
 
 
@@ -203,13 +161,7 @@ REM Add arguments with non-empty values to Arguments variable
 if not "%S_value%"=="" set "Arguments=!Arguments! -S "%S_value%""
 if not "%B_value%"=="" set "Arguments=!Arguments! -B "%B_value%""
 if not "%G_value%"=="" set "Arguments=!Arguments! -G "%G_value%""
-if not "%A_value%"=="" set "Arguments=!Arguments! -A "%A_value%""
-if not "%DCMAKE_BUILD_TYPE_value%"=="" set "Arguments=!Arguments! -DCMAKE_BUILD_TYPE="%DCMAKE_BUILD_TYPE_value%""
-if not "%DCMAKE_CONFIGURATION_TYPES_value%"=="" set "Arguments=!Arguments! -DCMAKE_CONFIGURATION_TYPES="%DCMAKE_CONFIGURATION_TYPES_value%""
-if not "%DCMAKE_CXX_FLAGS_value%"=="" set "Arguments=!Arguments! -DCMAKE_CXX_FLAGS="%DCMAKE_CXX_FLAGS_value%""
-if not "%DCMAKE_PREFIX_PATH_value%"=="" set "Arguments=!Arguments! -DCMAKE_PREFIX_PATH="%DCMAKE_PREFIX_PATH_value%""
-if not "%DCMAKE_CXX_COMPILER_value%"=="" set "Arguments=!Arguments! -DCMAKE_CXX_COMPILER="%DCMAKE_CXX_COMPILER_value%""
-if not "%DCMAKE_LINKER_value%"=="" set "Arguments=!Arguments! -DCMAKE_LINKER="%DCMAKE_LINKER_value%"
+if not "%DCMAKE_TOOLCHAIN_FILE%"=="" set "Arguments=!Arguments! -DCMAKE_TOOLCHAIN_FILE="%DCMAKE_TOOLCHAIN_FILE%""
 
 
 
