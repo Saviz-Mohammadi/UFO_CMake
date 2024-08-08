@@ -4,5 +4,7 @@ document.addEventListener('DOMContentLoaded', function()
     
     var element = document.getElementById('current-year');
     
-    element.textContent = 'Last updated: ' + currentYear + '';
+    var currentContent = element.textContent;
+    
+    element.textContent = currentContent + ' Last updated on year ' + currentYear;
 });

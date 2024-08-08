@@ -1,15 +1,32 @@
-function copyCode()
+function copyCode(button)
 {
-  const codeContainer = document.querySelector('.code-container');
-  const code = codeContainer.querySelector('code');
+  // Find the closest parent `.code-container` of the clicked button
+  const codeContainer = button.closest('.code-container');
 
-  const textarea = document.createElement('textarea');
-  textarea.value = code.textContent;
-  document.body.appendChild(textarea);
+  // Select the `pre` element within that `.code-container`
+  const pre = codeContainer.querySelector('pre').textContent;
 
-  textarea.select();
-  document.execCommand('copy');
-  textarea.remove();
+  navigator.clipboard.writeText(pre)
+  .then(() =>
+  {
+    alert('Code copied to clipboard!');
+  })
+  .catch(err =>
+  {
+    console.error('Failed to copy code: ', err);
+  });
+}
 
-  alert('Code copied to clipboard!');
+
+
+
+function copyEmail()
+{
+  const email = 'savizmohammadi@yahoo.com';
+
+  // Use the Clipboard API to copy the email address
+  navigator.clipboard.writeText(email).then(() =>
+  {
+    alert('Email copied to clipboard!');
+  });
 }

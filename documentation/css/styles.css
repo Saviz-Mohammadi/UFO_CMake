@@ -1,16 +1,5 @@
 :root
 {
-    /* Blue Colors */
-    --color-blue-1: #4848D6;
-    --color-blue-2: #3838D2;
-    --color-blue-3: #2D2DCB;
-    --color-blue-4: #2A2ABC;
-    --color-blue-5: #2626AC;
-    --color-blue-6: #23239D;
-    --color-blue-7: #1F1F8E;
-    --color-blue-8: #1C1C7F;
-    --color-blue-9: #191970;
-
     /* Green Colors */
     --color-green-1: #5CD75C;
     --color-green-2: #4FD34F;
@@ -22,28 +11,6 @@
     --color-green-8: #259825;
     --color-green-9: #228B22;
 
-    /* Yellow Colors */
-    --color-yellow-1: #F4C34C;
-    --color-yellow-2: #F3BE3D;
-    --color-yellow-3: #F2BA2E;
-    --color-yellow-4: #F1B520;
-    --color-yellow-5: #F0B011;
-    --color-yellow-6: #E4A60D;
-    --color-yellow-7: #D59B0C;
-    --color-yellow-8: #C6900B;
-    --color-yellow-9: #B8860B;
-
-    /* Orange Colors */
-    --color-orange-1: #FF9347;
-    --color-orange-2: #FE8A38;
-    --color-orange-3: #FF8228;
-    --color-orange-4: #FF7919;
-    --color-orange-5: #FF700A;
-    --color-orange-6: #F96800;
-    --color-orange-7: #EA6100;
-    --color-orange-8: #DB5B00;
-    --color-orange-9: #CC5500;
-
     /* Red Colors */
     --color-red-1: #FF1919;
     --color-red-2: #FF0606;
@@ -54,28 +21,6 @@
     --color-red-7: #A60000;
     --color-red-8: #930000;
     --color-red-9: #800000;
-
-    /* Purple Colors */
-    --color-purple-1: #9E1BFF;
-    --color-purple-2: #9607FF;
-    --color-purple-3: #8C00F3;
-    --color-purple-4: #8100E1;
-    --color-purple-5: #7600CE;
-    --color-purple-6: #6B00BB;
-    --color-purple-7: #6000A8;
-    --color-purple-8: #550094;
-    --color-purple-9: #4B0082;
-
-    /* Brown Colors */
-    --color-brown-1: #C78E54;
-    --color-brown-2: #C28446;
-    --color-brown-3: #BA7B3C;
-    --color-brown-4: #AB7238;
-    --color-brown-5: #9D6833;
-    --color-brown-6: #8F5F2E;
-    --color-brown-7: #81552A;
-    --color-brown-8: #734C25;
-    --color-brown-9: #654321;
 
     /* Light Colors */
     --color-light-1: #FFFFFF;
@@ -167,6 +112,13 @@
     --code-bg: var(--color-light-5);
     --code-rb: var(--color-light-9);
     --code-br: var(--color-light-3);
+    --code-ln: var(--color-dark-1);
+
+    /* Social Media buttons */
+    --button-social-fg: var(--color-dark-1);
+    --button-social-bg: transparent;
+    --button-social-fg-hover: var(--color-dark-6);
+    --button-social-bg-hover: transparent;
 
     /* The footer */
     --footer-fg: var(--color-light-3);
@@ -238,42 +190,42 @@
     --code-bg: var(--color-dark-2);
     --code-rb: var(--color-dark-5);
     --code-br: var(--color-dark-3);
+    --code-ln: var(--color-light-7);
+
+    /* Social Media buttons */
+    --button-social-fg: var(--color-light-6);
+    --button-social-bg: transparent;
+    --button-social-fg-hover: var(--color-light-2);
+    --button-social-bg-hover: transparent;
 
     /* The footer */
     --footer-fg: var(--color-light-3);
     --footer-bg: var(--color-dark-4);
 }
 
-
-
-
 /* The actual styling starts from here */
 
 body
-{                
+{
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    
-    font-family: 'Titillium Web', sans-serif;
+
     line-height: 1.6;
     color: var(--main-fg);
     background-color: var(--main-bg);
-
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
 }
 
 header
 {
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    gap: 0px 10px;
     padding: 20px 20px 20px 20px;
     margin: 0px 0px 20px 0px;
-    align-items: center;
     position: relative;
-    
-    letter-spacing: 1px;
+
     color: var(--header-fg);
     background-color: var(--header-bg);
 }
@@ -281,27 +233,119 @@ header
 #menu-h1
 {
     flex-grow: 1;
+    letter-spacing: 1px;
 }
 
-#dark-mode-toggle
+#menu-theme-toggle
 {
-    padding: 0px;
-    margin-top: 1px;
-    margin-right: 10px;
-    align-items: center;
-    width: 24px;
-    height: 24px;
-    
+    width: 40px;
+    height: 40px;
+
     color: var(--button-theme-fg);
-    background: transparent;
-    cursor: pointer;
+    background-color: transparent;
     border: none;
     transition: color 0.3s ease;
 }
 
-#dark-mode-toggle:hover
+#menu-theme-toggle:hover
 {
+    cursor: pointer;
     color: var(--button-theme-fg-hover);
+}
+
+#menu-navigation-toggle
+{
+    width: 40px;
+    height: 40px;
+
+    color: var(--ham-fg);
+    background-color: transparent;
+    border: none;
+    transition: color 0.3s ease;
+}
+
+#menu-navigation-toggle:hover
+{
+    cursor: pointer;
+    color: var(--ham-fg-hover);
+}
+
+#navigation
+{
+    display: none; /* Initially, do not show the menu */
+    min-width: 60vw;
+    max-width: 60vw;
+    padding: 20px;
+    margin: 10px auto 30px auto;
+
+    color: var(--menu-fg);
+    background-color: var(--menu-bg);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    border-radius: 5px;
+}
+
+#navigation.active
+{
+    display: block; /* Display menu */
+}
+
+#navigation a
+{
+    display: block;
+    padding: 8px 12px;
+
+    text-decoration: none;
+    color: var(--menu-fg);
+    border: 1px solid var(--menu-bg);
+    border-radius: 5px;
+}
+
+#navigation a:hover
+{
+    color: var(--menu-fg-hover);
+    background-color: var(--menu-bg-hover);
+    border: 1px solid var(--menu-bg-hover);
+    border-radius: 5px;
+}
+
+#toc
+{
+    margin-bottom: 20vh;
+}
+
+.toc
+{
+    list-style: none;
+    padding: 0px;
+}
+
+.toc li
+{
+    margin-bottom: 10px;
+}
+
+.toc a
+{
+    display: block;
+    padding: 8px 12px;
+
+    color: var(--toc-fg);
+    background-color: var(--toc-bg);
+    border: 1px solid var(--toc-br);
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.toc a:hover
+{
+    color: var(--toc-fg-hover);
+    background-color: var(--toc-bg-hover);
+}
+
+.toc a:active
+{
+    color: var(--toc-fg-active);
+    background-color: var(--toc-bg-active);
 }
 
 main
@@ -323,7 +367,7 @@ h2
     max-width: 60vw;
     margin-bottom: 30px;
     padding: 20px;
-    
+
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     background-color: var(--section-bg);
     border: 1px solid var(--section-br);
@@ -335,40 +379,34 @@ h2
     text-align: justify;
 }
 
-p pre
-{
-    white-space: pre; /* Preserve whitespace */
-    text-align: justify; /* Justify text */
-}
-
 .card
 {
     cursor: pointer;
 }
 
-.spacerSection
+.spacer-section
 {
     margin-bottom: 15vh;
 }
 
-.spacerTopic
+.spacer-topic
 {
     margin-top: 15vh;
 }
 
-.spacerCode
+.spacer-code-title
 {
     margin-top: 1.5vh;
 }
 
-.spacerText
+.spacer-paragraph
 {
     margin-top: 3.75vh;
 }
 
-.specialText
+.highlight
 {
-	color: var(--special-fg);
+    color: var(--special-fg);
 }
 
 .link
@@ -377,10 +415,23 @@ p pre
     color: var(--link-fg);
 }
 
+.justified-list-ul
+{
+
+    display: block;
+    list-style-type: square;
+    padding: 0px;
+    margin: 0px 40px;
+}
+
+.justified-list-ul li
+{
+    margin: 0;
+    text-align: justify;
+}
+
 .code-container
 {
-    overflow-x: auto;
-    
     border: 1px solid var(--code-br);
     border-radius: 5px;
     background-color: var(--code-bg);
@@ -393,7 +444,7 @@ p pre
     display: flex;
     position: relative;
     justify-content: flex-end;
-    
+
     background-color: var(--code-rb);
     border-top: 4px solid var(--code-rb);
     border-radius: 5px 5px 0 0;
@@ -405,7 +456,7 @@ p pre
     margin-top: 5px;
     margin-bottom: 10px;
     padding: 2px 20px;
-    
+
     color: var(--button-fg);
     background-color: var(--button-bg);
     cursor: pointer;
@@ -424,13 +475,29 @@ p pre
 .code-container code
 {
     display: block;
+    overflow-x: auto;
     padding: 10px;
     margin: 0;
-    
+
     font-size: 1.15em;
     white-space: none;
 }
 
+.enable-line-numbers span
+{
+    line-height: 0rem;
+    counter-increment: line;
+}
+
+.enable-line-numbers span:before
+{
+    content: counter(line);
+    display: inline-block;
+    border-right: 1px solid #ddd;
+    padding: 0 .5em;
+    margin-right: .5em;
+    color: var(--code-ln);
+}
 
 .scroll-to-top
 {
@@ -439,7 +506,7 @@ p pre
     bottom: 70px;
     right: 10px;
     padding: 7px 12px;
-    
+
     color: var(--button-fg);
     background-color: var(--button-bg);
     border: none;
@@ -455,39 +522,36 @@ p pre
     background-color: var(--button-bg-hover);
 }
 
-.toc
+.social-media-container
 {
-    list-style: none;
+
+    display: flex;
+    justify-content: center; /* Centers items horizontally */
+    align-items: center;     /* Centers items vertically */
+    height: 64px;
+    gap: 20px;
+}
+
+.social-media-container button
+{
     padding: 0px;
+    margin-top: 8px;
+    margin-right: 10px;
+    align-items: center;
+    width: 42px;
+    height: 42px;
+
+    color: var(--button-social-fg);
+    background: var(--button-social-bg);
+    cursor: pointer;
+    border: none;
+    transition: color 0.3s ease;
 }
 
-.toc li
+.social-media-container button:hover
 {
-    margin-bottom: 10px;
-}
-
-.toc a
-{
-    display: block;
-    padding: 8px 15px 8px 15px;
-    
-    color: var(--toc-fg);
-    background-color: var(--toc-bg);
-    border: 1px solid var(--toc-br);
-    border-radius: 5px;
-    text-decoration: none;
-}
-
-.toc a:hover
-{
-    color: var(--toc-fg-hover);
-    background-color: var(--toc-bg-hover);
-}
-
-.toc a:active
-{
-    color: var(--toc-fg-active);
-    background-color: var(--toc-bg-active);
+    color: var(--button-social-fg-hover);
+    background-color: var(--button-social-bg-hover);
 }
 
 table
@@ -527,7 +591,7 @@ footer
     text-align: center;
     padding: 15px 0;
     margin-top: auto;
-    
+
     color: var(--footer-fg);
     background-color: var(--footer-bg);
 }
@@ -537,25 +601,47 @@ footer
     font-size: 0.95em;
 }
 
-
 /* Mobile adjustments */
 @media (max-width: 768px)
 {
+    header
+    {
+        gap: 0px 10px;
+    }
+
+    #menu-theme-toggle
+    {
+        width: 32px;
+        height: 32px;
+    }
+
+    #menu-navigation-toggle
+    {
+        width: 32px;
+        height: 32px;
+    }
+
+    #navigation
+    {
+        min-width: 90vw;
+        max-width: 90vw;
+    }
+
     .section
     {
         min-width: 90vw;
         max-width: 90vw;
     }
-    
+
     .section p
     {
-        text-align: justify;
+        text-align: left;
     }
-    
-    .toc a
+
+    .justified-list-ul li
     {
-        padding: 0px 5px;
+        text-align: left;
     }
-    
+
     /* Adjust other styles as needed */
 }
