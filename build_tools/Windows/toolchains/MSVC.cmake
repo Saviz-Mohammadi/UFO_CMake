@@ -13,7 +13,7 @@ set(CMAKE_CONFIGURATION_TYPES "Debug;Release")
 set(CMAKE_GENERATOR_PLATFORM "x64")
 
 # Toolset version
-set(CMAKE_GENERATOR_TOOLSET "v142")
+set(CMAKE_GENERATOR_TOOLSET "v143")
 
 # Additional compiler and linker flags
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /W4 /O2 /MT /MP")
