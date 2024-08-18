@@ -435,7 +435,6 @@ h2
     border: 1px solid var(--code-br);
     border-radius: 5px;
     background-color: var(--code-bg);
-    font-family: 'Liberation Mono', 'Courier New', Courier;
     white-space: none;
 }
 
@@ -480,6 +479,7 @@ h2
     margin: 0;
 
     font-size: 1.15em;
+    font-family: 'Courier New', monospace;
     white-space: none;
 }
 

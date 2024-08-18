@@ -62,7 +62,7 @@
                 <h2>Table of Contents</h2>
                 
                 <ul class="toc">
-                    <li><a href="#CMake_Documentation">CMake documentation</a></li>
+                    <li><a href="#Introduction">Introduction</a></li>
                     <li><a href="#Build">Build</a></li>
                     <li><a href="#MSVC">MSVC (Visual Studio)</a></li>
                     <li><a href="#GCC">GCC</a></li>
@@ -96,11 +96,50 @@
             <!-- Documentation -->
             <!-- ########################################################## -->
 
-            <section id="#CMake_Documentation" class="section">
-                <h2>CMake documentation</h2>
+            <section id="#Introduction" class="section">
+                <h2>Introduction</h2>
 
                 <p>
-                    The UFO_CMake template handles most requirements for building a simple C++ project with CMake. However, when using CMake, there are a few key details we need to specify clearly, such as selecting the target toolchain and platform along with any special arguments for building the project. This section will guide you through these steps. This documentation includes sections below for each available toolchain, their recommended platforms, and the essential options and arguments. Please note that these represent only a subset of available concepts and options, and are the most important ones. For a comprehensive list, refer to the official <a class="link" href="https://cmake.org/documentation/" target="_blank">CMake documentation</a> or use the following command in your terminal:
+                    <span class="highlight">ABOUT</span><br>
+                    In today's era of computer development, it can be very challenging to get a C++ project up and running easily. There are numerous platforms, each with their own set of preferred toolchains, commands, and structures for creating software and projects based on C++. If we want to add external dependencies and other requirements to the mix, the situation can quickly become overwhelming. Despite the amazing capabilities of CMake, we can still encounter frustrating situations and problems that can be very specific and difficult to resolve. For this reason, I wanted to create a CMake template that could handle most beginner to intermediate requirements with minimal hassle.
+                </p>
+
+
+                <div class="spacer-paragraph"></div>
+
+
+                <p>
+                    Please keep in mind that this template is not perfect, and I did my best to create a clean and useful structure. However, creating the "perfect CMake" that can handle every situation is very difficult and nearly impossible to achieve. As a result, I had to establish some rules for my template. First and foremost, this template aims to make as many components as static as possible. This includes our own custom libraries, third-party (external) libraries, and even compiler-based libraries and dependencies, to achieve a truly static executable or artifact without running into dependency errors. I tested the template as much as possible, but please keep in mind that imperfections may still exist.
+                </p>
+
+
+                <div class="spacer-paragraph"></div>
+
+
+                <p>
+                    Secondly, I tried to set up the environment in such a way that internal libraries we create can automatically detect any third-party (external) libraries we may have linked against. Some programmers may disagree with or dislike this architecture, preferring to link against only the libraries they deem necessary. However, keep in mind that this is just a friendly template aimed at making things uncomplicated and easy. Lastly, this template does not enforce any specific toolchain, compiler, or environment. The overall architecture was designed to be as friendly as possible with all platforms. However, remember that we cannot make any guarantees.
+
+                </p>
+
+
+                <div class="spacer-paragraph"></div>
+
+
+                <p>
+                    This template also provides testing with the Catch2 library. Some people may prefer using gtest or other frameworks for testing. However, through experimentation, we found that Catch2 is the most flexible framework, creating the least amount of issues and errors, and it is compatible with most platforms and toolchains. We encountered numerous issues when setting up gtest, which is why this template is shipped with Catch2 in mind.
+                </p>
+
+
+
+
+                <div class="spacer-topic"></div>
+
+
+
+
+                <p>
+                    <span class="highlight">DOCUMENTATION</span><br>
+                    A few other small key details are required to be specified clearly as well, such as selecting the target toolchain and platform along with any special arguments for building the project. This section will guide you through these steps. This documentation includes sections below for each available toolchain, their recommended platforms, and the essential options and arguments. Please note that these represent only a subset of available concepts and options, and are the most important ones. For a comprehensive list, refer to the official <a class="link" href="https://cmake.org/documentation/" target="_blank">CMake documentation</a> or use the following command in your terminal:
                 </p>
 
                 <div class="spacer-code-title"></div>
@@ -148,9 +187,33 @@
 
                 <p>
                     <span class="highlight">NORMAL BUILD</span><br>
-                    The project includes a <span class="highlight">'build'</span> folder intended for generating project build artifacts. To initiate the build process from this directory, navigate to it using your terminal application. Then, execute the following commands, optionally appending any desired CMake arguments:
+                    The project includes a <span class="highlight">'build'</span> folder intended for generating project build artifacts. To initiate the generation process from this directory, navigate to it using your terminal application. Then, execute the following commands, optionally appending any desired CMake arguments:
                 </p>
 
+                <div class="spacer-code-title"></div>
+
+                <!-- Windows -->
+                <p>Windows (CMD)</p>
+                <div class="spacer-code-title"></div>
+
+                <div class="code-container">
+                    <div class="ribbon">
+                        <button class="copy-button" onclick="copyCode(this)">Copy</button>
+                    </div>
+
+
+                    <code>
+                        <pre>
+<!------------------------><span>cmake ".\..\source"</span></pre>
+                    </code>
+                </div>
+
+
+                <div class="spacer-paragraph"></div>
+
+
+                <!-- MacOS -->
+                <p>MacOS (Bash)</p>
                 <div class="spacer-code-title"></div>
 
                 <div class="code-container">
@@ -165,6 +228,12 @@
                     </code>
                 </div>
 
+
+                <div class="spacer-paragraph"></div>
+
+
+                <!-- Linux -->
+                <p>Linux (Bash)</p>
                 <div class="spacer-code-title"></div>
 
                 <div class="code-container">
@@ -175,7 +244,29 @@
 
                     <code>
                         <pre>
-<!------------------------><span>cmake --build "./"</span></pre>
+<!------------------------><span>cmake "./../source"</span></pre>
+                    </code>
+                </div>
+
+
+                <div class="spacer-paragraph"></div>
+
+
+                <p>
+                    Once the generation process is finished, you can initiate the build process via cmake directly using the following command:
+                </p>
+
+                <div class="spacer-code-title"></div>
+
+                <div class="code-container">
+                    <div class="ribbon">
+                        <button class="copy-button" onclick="copyCode(this)">Copy</button>
+                    </div>
+
+
+                    <code>
+                        <pre>
+<!------------------------><span>cmake --build "." --parallel</span></pre>
                     </code>
                 </div>
 
@@ -188,7 +279,7 @@
 
 
                 <p>
-                    <span class="highlight">USING BUILD TOOLS</span><br>
+                    <span class="highlight">BUILD_TOOLS</span><br>
                     Remembering all the arguments and commands for building a CMake project can indeed be quite challenging. To alleviate this, we have developed platform-specific command-line helper tools located in the <span class="highlight">"build_tools"</span> folder. Each platform includes a <span class="highlight">"config.json"</span> file where you can conveniently configure your build arguments. These arguments will be simply copied over to the CMake executable. Once you have customized your build settings to your preference, you can initiate the generation and build process with a single command:
                 </p>
 
