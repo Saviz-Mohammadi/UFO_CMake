@@ -140,6 +140,13 @@ option(USE_LIB_CURL
     "Adds the library 'curl' to the project"
     OFF)
 
+
+# This library depends on Threads.
+option(USE_ASIO
+
+    "Adds the library 'Asio (non-Boost)' to the project"
+    OFF)
+
 # [[ ----------------------------------------------------------------------- ]]
 # [[ ----------------------------------------------------------------------- ]]
 # [[ External Library Options ]]
@@ -465,6 +472,12 @@ endif()
 if(USE_LIB_CURL)
 
     include("${CMAKE_CURRENT_SOURCE_DIR}/cmake_scripts/libraries/curl.cmake")
+endif()
+
+
+if(USE_ASIO)
+
+    include("${CMAKE_CURRENT_SOURCE_DIR}/cmake_scripts/libraries/Asio.cmake")
 endif()
 
 
