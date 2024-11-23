@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION "3.30.0" FATAL_ERROR)
+cmake_minimum_required(VERSION "3.20.0" FATAL_ERROR)
 
 
 # [[ Project ]]
@@ -72,7 +72,7 @@ option(USE_TOOL_FORCE_STATIC_MSVC
 option(USE_TOOL_COPY_RESOURCES
 
     "This tool copies all resource files to the destination binary folder"
-    OFF)
+    ON)
 
 # [[ ----------------------------------------------------------------------- ]]
 # [[ ----------------------------------------------------------------------- ]]
@@ -183,77 +183,23 @@ endif()
 
 
 
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY	# Defines executable path
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY	# Defines executable location
 
     "${OUTPUT_DIRECTORY}/$<CONFIG>/executable")
 
 
-set(CMAKE_LIBRARY_OUTPUT_DIRECTORY	# Defines shared lib path
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY	# Defines shared lib location
 
     "${OUTPUT_DIRECTORY}/$<CONFIG>/executable")
 
 
-set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY	# Defines static lib path
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY	# Defines static lib location
 
     "${OUTPUT_DIRECTORY}/$<CONFIG>/lib_static")
 
 # [[ ----------------------------------------------------------------------- ]]
 # [[ ----------------------------------------------------------------------- ]]
 # [[ Output Locations ]]
-
-
-
-
-
-# [[ Resource Files ]]
-# [[ ----------------------------------------------------------------------- ]]
-# [[ ----------------------------------------------------------------------- ]]
-
-# Please note that these resources will not be automatically copied to the
-# binary location unless you activate the "copy_resources.cmake" script.
-
-set(BASE_RESOURCE_LOCATION
-
-    "${CMAKE_SOURCE_DIR}/resources")
-
-
-set(BASE_TXT_LOCATION
-
-    "${BASE_RESOURCE_LOCATION}/txt")
-
-
-set(BASE_JSON_LOCATION
-
-    "${BASE_RESOURCE_LOCATION}/json")
-
-
-set(BASE_ICON_LOCATION
-
-    "${BASE_RESOURCE_LOCATION}/icons")
-
-
-
-
-# Make sure to prefix the path with ${BASE_TXT_LOCATION}.
-set(RESOURCE_TXT_FILES
-
-    "")
-
-
-# Make sure to prefix the path with ${BASE_JSON_LOCATION}.
-set(RESOURCE_JSON_FILES
-
-    "")
-
-
-# Make sure to prefix the path with ${BASE_ICON_LOCATION}.
-set(RESOURCE_ICON_FILES
-
-    "")
-
-# [[ ----------------------------------------------------------------------- ]]
-# [[ ----------------------------------------------------------------------- ]]
-# [[ Resource Files ]]
 
 
 
