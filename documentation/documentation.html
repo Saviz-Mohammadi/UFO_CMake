@@ -63,6 +63,7 @@
                 
                 <ul class="toc">
                     <li><a href="#Introduction">Introduction</a></li>
+                    <li><a href="#Architecture">Architecture</a></li>
                     <li><a href="#Build">Build</a></li>
                     <li><a href="#MSVC">MSVC (Visual Studio)</a></li>
                     <li><a href="#GCC">GCC</a></li>
@@ -155,6 +156,111 @@
 <!------------------------><span>cmake --help</span></pre>
                     </code>
                 </div>
+            </section>
+
+            <!-- ########################################################## -->
+
+
+
+
+
+
+
+
+
+
+            <div class="spacer-section"></div>
+
+
+
+
+
+
+
+
+
+
+            <!-- Architecture -->
+            <!-- ########################################################## -->
+
+            <section id="#Introduction" class="section">
+                <h2>Architecture</h2>
+
+
+                <div class="spacer-paragraph"></div>
+                
+                
+                <p>
+                    <span class="highlight">OVERVIEW</span><br>
+                    This template employs an <span class="highlight">out-of-source</span> architecture with CMake. If you're unfamiliar with this approach, it means that the source and build folder locations are kept separate. This separation simplifies maintenance and interaction with the template by keeping build artifacts in a different location from the source files. This organization ensures cleaner project management and easier navigation. Let’s take a closer look at each folder.
+                </p>
+                
+                
+                
+                
+                <div class="spacer-topic"></div>
+
+
+
+
+                <p>
+                    <span class="highlight">SOURCE</span><br>
+                    The source folder is the core of the template, as programmers will primarily interact with its contents. This folder includes the following components: the root CMakeLists.txt file, the cmake_scripts folder, the internal_libraries folder, the resources folder, and the unit_tests folder. Let’s explore each of these elements in detail, starting with the simpler components and gradually moving to the more complex ones.
+                </p>
+
+
+                <div class="spacer-paragraph"></div>
+
+
+                <p>
+                    We begin with the root CMakeLists.txt file, which serves as the backbone of the entire template. It contains the overarching architectural and design script, most of which typically does not require modification. However, an important aspect of this file is the set of configurable options located near the beginning. These options can be modified either when invoking CMake or directly within the script. Additionally, you can customize the project's name and description at the top of the file.
+                </p>
+
+
+                <div class="spacer-paragraph"></div>
+
+
+                <p>
+                    The second component is the cmake_scripts folder, which contains a collection of CMake scripts that provide additional functionality and features used by the root CMakeLists.txt file. In most cases, there is no need to modify or interact with the contents of this folder. However, if you have specific requirements or wish to add custom scripts for your own use cases, you can make changes here.
+
+                </p>
+
+
+                <div class="spacer-paragraph"></div>
+
+
+                <p>
+                    Next is the internal_libraries folder. By design, nearly all the code you write in this template will be organized as internal library modules. To create a new module, you can copy the existing factory library, modify its contents, and update the CMakeLists.txt file inside it. This approach encourages programmers to think more clearly and establish well-defined boundaries between different parts of their code.
+                </p>
+                
+                
+                <div class="spacer-paragraph"></div>
+
+
+                <p>
+                    The resources folder is designed to provide a dedicated space for storing all the assets your program may rely on, such as text files, JSON files, XML files, images, icons, and other resources. The folder's structure and file organization will be preserved exactly as they are when copied to the final executable's location. This ensures a straightforward way to reference your resources within the final program.
+                </p>
+                
+                
+                <div class="spacer-paragraph"></div>
+
+
+                <p>
+                    Last but not least is the unit_tests folder, which contains all your unit test source code. It follows a similar structure to the internal_libraries folder. To create a new unit test, simply duplicate the existing factory unit test, modify its contents, and update the corresponding CMakeLists.txt file. After compiling your project, all unit tests will be placed in a folder named tests alongside the executable.
+                </p>
+
+
+
+
+                <div class="spacer-topic"></div>
+
+
+
+
+                <p>
+                    <span class="highlight">BUILD</span><br>
+                    The build folder is where all build artifacts, including unit tests, are stored. If you're using CMake directly from the command line or through a development environment, you're good to go. However, for added convenience, we've included helpful utilities in the build_tools folder, located alongside the build folder. These tools provide customizable toolchains and scripts to simplify running CMake and generating your project. For more details, refer to the <a class="link" href="#Build" target="_self">Build</a> section.
+                </p>
             </section>
 
             <!-- ########################################################## -->
