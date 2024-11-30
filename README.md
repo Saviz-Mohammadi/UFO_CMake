@@ -8,9 +8,9 @@ This is a very simple CMake template project which enables the setup of a C++ pr
 Ensure that you have the following set of tools installed on your personal machine before attempting to use this template:
 
 ```diff
-CMake                         (Minimum version required is 3.30.0)
-A C++ compiler of your choice (MSVC, MinGW, GCC, Clang, ...)
-Git                           (For the FetchContent command to work in CMake)
+CMake                          (Minimum version required is 3.10.0)
+A C++ toolchain of your choice (MSVC, MinGW, GCC, Clang, ...)
+Git                            (For the FetchContent command to work in CMake)
 ```
 
 
@@ -29,7 +29,7 @@ Clang-Format                  (For formatting your files)
 This template provides a nice little documentation file that you can open in your web browser. This documentation provides explanation for the template. To open this file, follow these instructions:
 
 ```diff
-UFO_CMake (folder) >> documentation (folder) >> documentation.html (file)
+UFO_CMake (folder) >> documentation (folder) >> documentation.html (Open this file in your favourite web browser)
 ```
 
 

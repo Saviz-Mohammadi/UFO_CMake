@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION "3.20.0" FATAL_ERROR)
+cmake_minimum_required(VERSION "3.10.0" FATAL_ERROR)
 
 
 # [[ Project ]]
@@ -72,7 +72,7 @@ option(USE_TOOL_FORCE_STATIC_MSVC
 option(USE_TOOL_COPY_RESOURCES
 
     "This tool copies all resource files to the destination binary folder"
-    ON)
+    OFF)
 
 # [[ ----------------------------------------------------------------------- ]]
 # [[ ----------------------------------------------------------------------- ]]
