@@ -147,6 +147,11 @@ option(USE_ASIO
     "Adds the library 'Asio (non-Boost)' to the project"
     OFF)
 
+option(USE_PORTAUDIO
+
+    "A cross-platform, open-source C language library for real-time audio input and output."
+    OFF)
+
 # [[ ----------------------------------------------------------------------- ]]
 # [[ ----------------------------------------------------------------------- ]]
 # [[ External Library Options ]]
@@ -426,6 +431,11 @@ if(USE_ASIO)
     include("${CMAKE_CURRENT_SOURCE_DIR}/cmake_scripts/libraries/Asio.cmake")
 endif()
 
+
+if(USE_PORTAUDIO)
+
+    include("${CMAKE_CURRENT_SOURCE_DIR}/cmake_scripts/libraries/PortAudio.cmake")
+endif()
 
 
 
