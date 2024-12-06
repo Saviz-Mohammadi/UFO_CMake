@@ -76,7 +76,28 @@ target_link_libraries(${PROJECT_NAME}
 
 # [[ ----------------------------------------------------------------------- ]]
 # [[ ----------------------------------------------------------------------- ]]
-# [[ Library ]]
+# [[ Test ]]
+
+
+
+
+
+# [[ Output Location ]]
+# [[ ----------------------------------------------------------------------- ]]
+# [[ ----------------------------------------------------------------------- ]]
+
+# This action makes it easier to distinguish between main executable and
+# unit tests. This also helps "run_executable" scripts to function correctly.
+
+set_target_properties(${PROJECT_NAME}
+    
+    PROPERTIES
+    
+    RUNTIME_OUTPUT_DIRECTORY "${OUTPUT_DIRECTORY}/$<CONFIG>/executable/unit_tests")
+
+# [[ ----------------------------------------------------------------------- ]]
+# [[ ----------------------------------------------------------------------- ]]
+# [[ Output Location ]]
 
 
 
