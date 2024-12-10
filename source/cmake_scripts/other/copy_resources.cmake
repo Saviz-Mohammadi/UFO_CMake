@@ -2,6 +2,9 @@
 # [[ ----------------------------------------------------------------------- ]]
 # [[ ----------------------------------------------------------------------- ]]
 
+# This solution works for copying resources. However, what do I need to do
+# to make these filse show up in my editor?
+
 add_custom_target(CopyResources ALL
         COMMAND ${CMAKE_COMMAND} -E copy_directory
         ${PROJECT_SOURCE_DIR}/resources
